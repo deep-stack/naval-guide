@@ -437,6 +437,53 @@ html.fs-locked { overflow: hidden; }
 .case-panel.is-full, .pcard.is-full { align-items: center; }
 @media (max-width: 900px) { .exp.is-full { grid-template-columns: 1fr; } }
 
+/* real vessels (Module 14): to-scale model drawings */
+.sv-scroll { overflow-x: auto; }
+.sv { width: 100%; min-width: 620px; height: auto; display: block; }
+.sv text { font: 500 12.5px var(--f-mono); fill: var(--ink-2); }
+.sv .hdr { font: 700 12px var(--f-mono); letter-spacing: .08em; fill: var(--ink-3); }
+.sv .dimt { fill: var(--ink-3); font-size: 11.5px; }
+.sv .hlt { fill: var(--accent); font-weight: 700; } .sv .ent { fill: var(--env); font-weight: 700; }
+.sv .lut { font: 700 12.5px var(--f-mono); fill: var(--ink); }
+.sv .sea { fill: var(--water); opacity: .35; } .sv .seao { fill: var(--water); opacity: .55; }
+.sv .wl { stroke: var(--water-line); stroke-width: 1.4; }
+.sv .bed { fill: var(--seabed); }
+.sv .hull { fill: var(--hull-fill); stroke: var(--hull); stroke-width: 1.3; stroke-linejoin: round; }
+.sv .sup, .sv .tower { fill: var(--surface-2); stroke: var(--hull); stroke-width: 1; }
+.sv .win { fill: var(--ink-3); }
+.sv .box { fill: var(--cargo); stroke: var(--hull); stroke-width: .5; } .sv .box2 { opacity: .75; }
+.sv .grid { stroke: var(--hull); stroke-width: .4; opacity: .7; }
+.sv .cargo { fill: var(--cargo); stroke: var(--hull); stroke-width: 1; }
+.sv .grill { fill: var(--ink-3); }
+.sv .proc { fill: var(--cargo); stroke: var(--hull); stroke-width: .7; } .sv .proc2 { opacity: .8; }
+.sv .turret { fill: var(--accent); opacity: .85; }
+.sv .crane { fill: var(--accent); stroke: var(--hull); stroke-width: .6; }
+.sv .boom { stroke: var(--accent); stroke-width: 5; stroke-linecap: round; } .sv .boomt { stroke: var(--hull); stroke-width: 1; }
+.sv .rig, .sv .lead { stroke: var(--ink-3); stroke-width: 1; }
+.sv .prop { fill: var(--hull); }
+.sv .thr { fill: none; stroke: var(--hull); stroke-width: 1; }
+.sv .mast, .sv .flare { stroke: var(--hull); stroke-width: 1.4; }
+.sv .blade { stroke: var(--hull); stroke-width: 2.4; stroke-linecap: round; }
+.sv .bhd { stroke: var(--hull); stroke-width: 1; stroke-dasharray: 4 3; }
+.sv .solidb { fill: var(--ink-3); } .sv .ball { fill: var(--water-line); opacity: .55; }
+.sv .moor { fill: none; stroke: var(--struct); stroke-width: 1.6; }
+.sv .anc { fill: var(--struct); }
+.sv .leg { stroke: var(--hull); stroke-width: 4; } .sv .brace { stroke: var(--hull); stroke-width: 1.6; }
+.sv .tow { fill: none; stroke: var(--accent); stroke-width: 2.4; } .sv .tow.ah { fill: var(--accent); }
+.sv .env { stroke: var(--env); } .sv .env.ah { fill: var(--env); stroke: none; }
+.sv .dim line { stroke: var(--ink-3); stroke-width: 1; }
+.sv .mk circle { stroke: var(--surface); stroke-width: 1.5; } .sv .mk text { font: 700 10px var(--f-mono); fill: #fff; }
+.sv .mk-g circle { fill: var(--weight); } .sv .mk-b circle { fill: var(--buoy); } .sv .mk-m circle { fill: var(--hi); } .sv .mk-m text { fill: #1a1a1a; }
+.sv .lu:hover .hull, .sv .lu:focus .hull { fill: var(--accent-soft); stroke: var(--accent); }
+.sv .lu:hover .lut, .sv .lu:focus .lut { fill: var(--accent); text-decoration: underline; }
+.sv-tabs { display: flex; gap: 6px; flex-wrap: wrap; padding-right: 40px; }
+.specs { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1px; background: var(--rule); border: 1px solid var(--rule); border-radius: var(--radius); overflow: hidden; margin: 0; }
+.specs > div { background: var(--surface); padding: 8px 12px; }
+.specs dt { font-family: var(--f-mono); font-size: .74rem; color: var(--ink-3); text-transform: uppercase; letter-spacing: .05em; }
+.specs dd { margin: 2px 0 0; font-weight: 700; font-size: .95rem; }
+.ships .src { font-size: .82rem; color: var(--ink-3); }
+.ships td:first-child { font-weight: 700; }
+
 /* vessel anatomy (Module 1) */
 .anat { margin: 0; background: var(--surface); border: 1px solid var(--rule); border-radius: 8px; box-shadow: var(--shadow); overflow: hidden; }
 .anat-bar { display: flex; gap: 10px 16px; justify-content: space-between; align-items: center; flex-wrap: wrap; padding: 12px 14px; border-bottom: 1px solid var(--rule); }
@@ -676,6 +723,7 @@ footer.site { border-top: 1px solid var(--rule); margin-top: 40px; padding-block
     <li><a href="#m8"><span class="n">11</span><span>Offshore systems</span></a></li>
     <li><a href="#m9"><span class="n">12</span><span>Trade-offs &amp; judgement</span></a></li>
     <li><a href="#m10"><span class="n">13</span><span>Terms that get confused</span></a></li>
+    <li><a href="#ships"><span class="n">14</span><span>Real vessels</span></a></li>
     <li><a href="#case"><span class="n">CS</span><span>Case study: tow &amp; install</span></a></li>
     <li><a href="#units"><span class="n">UC</span><span>Units &amp; conversions</span></a></li>
     <li><a href="#rules"><span class="n">RT</span><span>Rules of thumb</span></a></li>
@@ -713,7 +761,7 @@ footer.site { border-top: 1px solid var(--rule); margin-top: 40px; padding-block
     <div id="concept-map"></div>
   </figure>
   <div class="paths" aria-label="Suggested routes through the guide">
-    <div><b>New to all of this</b>The modules are in learning order, so simply start at the top:<ol><li><a href="#m12">Module 1 · Foundations: moments and pressure</a></li><li><a href="#anat">Module 2 · Anatomy of a vessel</a></li><li><a href="#m1">Modules 3 to 5</a> · buoyancy, stability, loading</li><li><a href="#m4">Modules 6 to 9</a> · waves, motions, towing, hull form</li><li><a href="#m7">Modules 10 to 12</a>, then <a href="#m10">13</a> to tie the vocabulary together, and the <a href="#case">case study</a></li></ol></div>
+    <div><b>New to all of this</b>The modules are in learning order, so simply start at the top:<ol><li><a href="#m12">Module 1 · Foundations: moments and pressure</a></li><li><a href="#anat">Module 2 · Anatomy of a vessel</a></li><li><a href="#m1">Modules 3 to 5</a> · buoyancy, stability, loading</li><li><a href="#m4">Modules 6 to 9</a> · waves, motions, towing, hull form</li><li><a href="#m7">Modules 10 to 12</a>, then <a href="#m10">13</a> to tie the vocabulary together, <a href="#ships">14</a> to see it all in real vessels, and the <a href="#case">case study</a></li></ol></div>
     <div><b>Reading analysis reports</b>For the language of hydrodynamics, moorings and structural analysis:<ol><li><a href="#m4">Module 6 · Waves and sea states</a></li><li><a href="#m5">Module 7 · Motions and RAOs</a></li><li><a href="#m8">Module 11 · Moorings and risers</a></li><li><a href="#m7">Module 10 · Structures and FEA</a></li><li><a href="#m10">Module 13 · Terms that get confused</a></li></ol></div>
     <div><b>Transport and installation</b>For barge tows, lifts and marine operations:<ol><li><a href="#m3">Module 5 · Loading, ballast and cranes</a></li><li><a href="#m6">Module 8 · Resistance and towing</a></li><li><a href="#m9">Module 12 · Weather windows and judgement</a></li><li><a href="#t1-6">Module 1 · Weight in water (1.6)</a></li><li>The <a href="#case">case study</a>, then <a href="#rules">rules of thumb</a></li></ol></div>
   </div>
@@ -1251,7 +1299,7 @@ footer.site { border-top: 1px solid var(--rule); margin-top: 40px; padding-block
     </div>
   </div>
 
-  <div class="topic">
+  <div class="topic" id="t5-3">
     <h3><span class="tn">5.3</span>A crane lift, stage by stage</h3>
     <div class="prose">
       <p>The moment a crane lifts a load clear of the deck, the load's weight effectively acts at the crane's boom tip, high above the deck, because the load is free to swing from the hook. G rises immediately, as if the load had been teleported to the tip. Slewing the boom over the side then adds a large heeling moment. Each stage changes the stability picture, and the most critical stage is not always the obvious one.</p>
@@ -1842,7 +1890,7 @@ footer.site { border-top: 1px solid var(--rule); margin-top: 40px; padding-block
     </figure>
   </div>
 
-  <div class="topic">
+  <div class="topic" id="t8-5">
     <h3><span class="tn">8.5</span>Shallow water: squat, the pull towards the seabed</h3>
     <div class="prose">
       <p>A vessel moving through shallow water sits lower than it does at rest, and usually trims too. This sinkage is called <button class="t" type="button" data-t="squat">squat</button>, and it is one of the main causes of groundings in ports and channels. It happens even though nothing has been loaded and the hull has not changed.</p>
@@ -2223,7 +2271,7 @@ footer.site { border-top: 1px solid var(--rule); margin-top: 40px; padding-block
 
   <div class="q"><span class="q-label">The question</span><p>A storm pushes a moored production vessel 40 m off its station. What happens to the mooring lines, the anchors and the flexible riser carrying oil up from the seabed?</p></div>
 
-  <div class="topic">
+  <div class="topic" id="t11-1">
     <h3><span class="tn">11.1</span>The parts of a floating installation</h3>
     <figure class="exp" id="exp-sys">
       <div class="exp-stage">
@@ -2679,6 +2727,304 @@ footer.site { border-top: 1px solid var(--rule); margin-top: 40px; padding-block
   </div>
   <div class="predictions" id="m10-predict"></div>
   <div class="cc"><span class="cc-label">In practice</span><p>Engineering reports are precise about these words because each one points to a different load case, analysis or acceptance criterion. When reading one, it helps to ask three questions of any number: is it steady or dynamic, which statistic is it, and what is it measured from? The <button class="t" type="button" data-t="glossary">glossary</button> links each term to the others in its family.</p></div>
+</section>
+
+<section class="module ships" id="ships" aria-labelledby="ships-h">
+  <header class="mod-head">
+    <p class="eyebrow">Module 14 · Applied</p>
+    <h2 id="ships-h">Real vessels: the concepts in steel</h2>
+    <p class="dek">Eight well-known vessels, each built around one or two of the ideas in this guide. For each one: a model drawing to scale, its main particulars, and the design decisions those particulars reveal. Read them as worked examples: every number is there because of a reason you have met before.</p>
+  </header>
+
+  <div class="q"><span class="q-label">The question</span><p>A container ship, a barge and an offshore crane vessel all float, all carry weight, all meet the same waves. Why do they end up with such different shapes and proportions?</p></div>
+
+  <div class="topic" id="t14-1">
+    <h3><span class="tn">14.1</span>Eight vessels at one scale</h3>
+    <div class="prose">
+      <p>The line-up below puts every vessel in this module side by side at the same scale, each floating at a typical draught. Click a vessel to jump to its page. Notice how little the length tells you: the 91 m barge and the 89 m tug are almost the same length and could hardly be more different, and the wind turbine standing on the right is taller than most of the ships are long.</p>
+    </div>
+    <figure class="fig">
+      <div class="sv-scroll" id="ships-lineup"></div>
+      <figcaption><strong>To scale.</strong> Side views drawn from published main dimensions. Deckhouses, cranes and topsides are simplified; Prelude's hull depth and draught are estimates (see 14.4). Hywind is a wind turbine on a floating spar, drawn side-on with its rotor edge-on.</figcaption>
+    </figure>
+    <div class="cards">
+      <div class="card"><h4>Stable by width</h4><span class="unit">barge · Ever Given · Prelude · Pioneering Spirit</span><p>A wide waterplane makes BM large (BM = I ÷ volume, and I grows with beam cubed). Ships and barges rely on this <em>form stability</em>. The catch: a wide waterplane is also a stiff spring, so they respond to ordinary wave periods.</p></div>
+      <div class="card"><h4>Stable by spread-out columns</h4><span class="unit">Sleipnir · BOKA Vanguard (submerged)</span><p>A semi-submersible pierces the surface with a few columns placed far apart. Little waterplane area, so heave is soft and slow; but the area sits far from the centreline, so the second moment I, and with it GM, stays useful.</p></div>
+      <div class="card"><h4>Stable by low weight</h4><span class="unit">Hywind spar</span><p>A spar has almost no waterplane at all. It stays upright because heavy ballast puts G below B: it hangs like a pendulum. Very gentle motions, but it needs deep water.</p></div>
+      <div class="card"><h4>Held by something else</h4><span class="unit">tug · moorings · DP</span><p>Floating is only half the job. Each vessel also needs a way to stay put or move: engines and propellers, a tug and towline, mooring lines, or thrusters under computer control. That choice shapes the hull as much as stability does.</p></div>
+    </div>
+  </div>
+
+  <div class="topic" id="t14-2">
+    <h3><span class="tn">14.2</span>A North Sea deck barge: the simplest hull that works</h3>
+    <div class="prose">
+      <p>The workhorse of offshore transport is a flat steel box with no engine. The "300 ft" class is one of the most common sizes; the figures here are from a published datasheet for a pair of such barges built in 2013, 91.44 × 30.48 × 6.1 m (300 × 100 × 20 ft). It is close to the barge in the <a href="#case">case study</a>, and nearly everything about it is a direct answer to Modules 3 to 8.</p>
+    </div>
+    <figure class="fig sv-fig" data-ship="barge">
+      <figcaption><strong>Model drawing, to scale.</strong> The deck cargo is an example only. Toggle the section to heel it until the deck edge reaches the water. G, B and M use the guide's colours; G's height depends entirely on the cargo.</figcaption>
+    </figure>
+    <dl class="specs">
+      <div><dt>Length × beam × depth</dt><dd>91.44 × 30.48 × 6.10 m</dd></div>
+      <div><dt>Loaded draught</dt><dd>4.89 m</dd></div>
+      <div><dt>Deadweight</dt><dd>10,866 t</dd></div>
+      <div><dt>Deck strength</dt><dd>25 t/m² (about 2.5 bar)</dd></div>
+      <div><dt>Ballast pumps</dt><dd>750 + 500 m³/h</dd></div>
+      <div><dt>Towing gear MBL</dt><dd>2,270 kN (231 t)</dd></div>
+    </dl>
+    <div class="tablewrap"><table>
+      <thead><tr><th>Design decision</th><th>Why</th><th>Concept</th></tr></thead>
+      <tbody>
+        <tr><td>Wide, shallow box</td><td>BM = B² ÷ 12T = 30.48² ÷ (12 × 4.89) ≈ 15.8 m, so M sits about 18.3 m above the keel. Tall, heavy cargo can raise G well above the deck and GM stays large.</td><td><a href="#m2">Module 4</a></td></tr>
+        <tr><td>Low freeboard (1.2 m loaded)</td><td>Depth costs steel and buys little for a box that only carries cargo on deck. But it limits the range: the deck edge goes under at only about 4.5°, and the GZ curve peaks soon after. Big GM, short range.</td><td><a href="#m2">Module 4</a>, <a href="#case">case study</a></td></tr>
+        <tr><td>Stiff in roll</td><td>With a GM of 10 m the roll period is about 0.8 × 30.48 ÷ √10 ≈ 7.7 s: short, inside the band of common wave periods. High stability means snappy rolling and large accelerations on the cargo, which the seafastening must carry.</td><td><a href="#m5">Module 7</a>, <a href="#t7-4">7.4</a></td></tr>
+        <tr><td>Raked bow and stern, skegs aft</td><td>Rakes cut tow resistance compared with a square end; the skegs give directional stability so the barge follows the tug instead of sheering from side to side.</td><td><a href="#m6">Module 8</a>, <a href="#t9-3">9.3</a></td></tr>
+        <tr><td>Deck rated 25 t/m², closely stiffened</td><td>Cargo loads arrive as concentrated loads through a grillage. The rating (about 245 kN/m²) and the frame spacing tell engineers where the grillage must land.</td><td><a href="#m7">Module 10</a></td></tr>
+        <tr><td>Two longitudinal bulkheads, many tanks</td><td>Subdivision for damage stability, and small tanks for trim and heel control with little free-surface loss. One metre of draught is about 2,860 t, so the 1,250 m³/h of pumps need over two hours for it: load-out plans are built around that rate and the tide.</td><td><a href="#m3">Module 5</a>, <a href="#t2-3">2.3</a></td></tr>
+        <tr><td>Towing gear with 2,270 kN MBL</td><td>The bridle and brackets must be stronger than the tug can pull. With the usual factor of about 2.2 on bollard pull, this gear suits tugs up to about 105 t bollard pull without restriction.</td><td><a href="#t13-6">13.6</a>, <a href="#m6">Module 8</a></td></tr>
+      </tbody>
+    </table></div>
+  </div>
+
+  <div class="topic" id="t14-3">
+    <h3><span class="tn">14.3</span>Ever Given: a 400 m container ship in a canal</h3>
+    <div class="prose">
+      <p>One of the Evergreen G-class, the largest container ships of their day. On 23 March 2021 she ran aground across the Suez Canal in strong wind and blowing sand, and blocked it for six days. Her proportions explain both why she is economical and why a canal is a hard place for her.</p>
+    </div>
+    <figure class="fig sv-fig" data-ship="eg">
+      <figcaption><strong>Model drawing, to scale.</strong> Container stacks and deckhouses simplified. The section's G and M heights are illustrative: real values change with every load. Side area and squat are rough estimates from the guide's simple formulas, not an accident reconstruction.</figcaption>
+    </figure>
+    <dl class="specs">
+      <div><dt>Length × beam</dt><dd>399.94 × 58.8 m</dd></div>
+      <div><dt>Depth</dt><dd>32.9 m</dd></div>
+      <div><dt>Draught (design / max)</dt><dd>14.5 / 16.0 m</dd></div>
+      <div><dt>Deadweight</dt><dd>≈ 199,600 t</dd></div>
+      <div><dt>Capacity</dt><dd>20,124 TEU</dd></div>
+      <div><dt>Engine · speed</dt><dd>59,300 kW · ~22.8 kn</dd></div>
+    </dl>
+    <div class="tablewrap"><table>
+      <thead><tr><th>Design decision</th><th>Why</th><th>Concept</th></tr></thead>
+      <tbody>
+        <tr><td>Long and slender (L/B ≈ 6.8)</td><td>Wave-making resistance depends on length; a long hull makes smaller waves at a given speed. One engine and one propeller move 20,000 boxes.</td><td><a href="#m6">Module 8</a>, <a href="#t9-1">9.1</a></td></tr>
+        <tr><td>Wide beam (58.8 m)</td><td>Containers stack high on deck, which raises G. Beam buys back stability (BM grows with B²), and 24 rows of boxes fit across.</td><td><a href="#m2">Module 4</a></td></tr>
+        <tr><td>Modest GM, by intent</td><td>Too much GM means violent rolling and lashing failures. With GM of about 2 m the roll period is roughly 33 s. That slow roll invites <button class="t" type="button" data-t="parametric-roll">parametric roll</button> in long head or following seas, when the wave encounter period is about half the roll period.</td><td><a href="#m5">Module 7</a>, <a href="#m9">Module 12</a></td></tr>
+        <tr><td>Bulbous bow</td><td>Its own wave cancels part of the bow wave at the design speed and draught.</td><td><a href="#t9-2">9.2</a></td></tr>
+        <tr><td>Bridge forward, engine aft ("twin island")</td><td>From an aft bridge, the officers could not see the water ahead over the stacks. Moving the bridge forward meets the visibility rules and frees space aft for more boxes.</td><td><a href="#anat">Module 2</a></td></tr>
+        <tr><td>Huge side area above water</td><td>About 14,000 m² of hull and boxes (estimate). A 35 kn wind pushes with roughly 2.8 MN, about 280 tonnes-force, and the hull's grip on the water is weak at canal speeds.</td><td><a href="#m6">Module 8</a>, <a href="#m10">Module 13</a></td></tr>
+        <tr><td>Deep draught in a shallow canal</td><td>Squat by the ICORELS formula: about 0.3 m at 8 kn, 0.6 m at 12 kn in 24 m of water, and more in a narrow, confined channel. Near a bank, the flow between hull and bank pulls the stern in: bank effect.</td><td><a href="#t8-5">8.5</a></td></tr>
+      </tbody>
+    </table></div>
+    <div class="explain">
+      <div class="why"><h4>What the Suez grounding shows</h4><p>The flag state's investigation found the pilots and master had not properly evaluated the strong wind and poor visibility, and that tugs were not used to help control the ship. The physics in the table are all ordinary: wind on a huge side area, weak steering at low speed, squat and bank effect in a confined channel. Together they used up the margin.</p></div>
+      <div class="decision"><h4>The link to offshore work</h4><p>The same arithmetic, wind area times wind pressure against the forces available to resist it, decides whether a tug can hold a barge carrying a tall module (Module 8) and whether a moored vessel stays within its offset limits (Module 11).</p></div>
+      <div class="myth"><h4>Misconception</h4><p><strong>"A bigger ship is a safer ship."</strong> Bigger brings more inertia and better seakeeping in open water, but more wind area, less clearance in channels and slower responses to rudder and engine. Size moves the risks; it does not remove them.</p></div>
+    </div>
+  </div>
+
+  <div class="topic" id="t14-4">
+    <h3><span class="tn">14.4</span>Prelude FLNG: a ship that never sails</h3>
+    <div class="prose">
+      <p>The largest floating offshore facility built: a 488 m hull that liquefies natural gas about 200 km off Western Australia and stores it until carriers collect it. It has no propulsion engine; it was towed to site in 2017 and is meant to stay there for 25 years, through Category 5 cyclones. It belongs to the <button class="t" type="button" data-t="fpso">FPSO</button> family: a ship-shaped hull chosen for storage volume, held by a turret mooring.</p>
+    </div>
+    <figure class="fig sv-fig" data-ship="prelude">
+      <figcaption><strong>Model drawing.</strong> Length to scale. Hull depth and draught are not given in the published figures; the draught shown is the box estimate below. Topsides simplified. The plan is not to scale: the moorings spread far wider than the hull is long.</figcaption>
+    </figure>
+    <dl class="specs">
+      <div><dt>Length × beam</dt><dd>488 × 74 m</dd></div>
+      <div><dt>Displacement (full)</dt><dd>≈ 600,000 t</dd></div>
+      <div><dt>Steel</dt><dd>&gt; 260,000 t</dd></div>
+      <div><dt>Turret</dt><dd>internal, ~93 m tall</dd></div>
+      <div><dt>Mooring</dt><dd>16 lines in 4 groups</dd></div>
+      <div><dt>Water depth</dt><dd>~250 m</dd></div>
+    </dl>
+    <div class="tablewrap"><table>
+      <thead><tr><th>Design decision</th><th>Why</th><th>Concept</th></tr></thead>
+      <tbody>
+        <tr><td>A ship-shaped hull, not a semi or a spar</td><td>It must store large volumes of LNG and liquids between offloadings; a long box hull gives storage volume and deck space for the gas plant cheaply.</td><td><a href="#t9-5">9.5</a></td></tr>
+        <tr><td>Draught from displacement</td><td>600,000 t ÷ (1.025 t/m³ × 488 × 74 m) ≈ 16 m if the hull were a perfect box; real ends are finer, so it floats a little deeper.</td><td><a href="#m1">Module 3</a></td></tr>
+        <tr><td>Internal turret near the bow</td><td>The hull weathervanes around the turret, so it always meets the weather bow-on: smallest wind, wave and current loads, and less roll. The non-turning chain table stays connected to the moorings and risers.</td><td><a href="#m4">Module 6</a>, <a href="#m8">Module 11</a></td></tr>
+        <tr><td>Quarters at the bow, flare at the stern</td><td>Because the bow points into the wind, gas leaks and flare heat blow away from the living quarters.</td><td><a href="#t11-1">11.1</a></td></tr>
+        <tr><td>16 lines on driven piles</td><td>Lines grouped four by four so the system still holds with a line broken; piles 65 m long take the loads in the seabed soil.</td><td><a href="#m8">Module 11</a></td></tr>
+        <tr><td>Tank shape against sloshing</td><td>Liquid cargo held at any fill level sloshes as the hull moves. Partially filled tanks are a free-surface and structural problem that land-based plants never face.</td><td><a href="#t5-2">5.2</a></td></tr>
+      </tbody>
+    </table></div>
+  </div>
+
+  <div class="topic" id="t14-5">
+    <h3><span class="tn">14.5</span>BOKA Vanguard: a ship that sinks its own deck</h3>
+    <div class="prose">
+      <p>A semi-submersible <button class="t" type="button" data-t="heavy-transport-vessel">heavy transport vessel</button>, built in 2012 to carry the largest floating platforms in one piece. She ballasts down until her deck is 16 m under water, the cargo floats in over it, and she deballasts to lift it dry. Her first cargo was the Jack/St. Malo semi-submersible hull, about 53,000 t; she has also carried an FPSO and a 193 m spar hull.</p>
+    </div>
+    <figure class="fig sv-fig" data-ship="vanguard">
+      <figcaption><strong>Model drawing, to scale.</strong> Deckhouse, casings and cargo simplified; the cargo is a generic semi-submersible hull. Draughts other than 31 m are illustrative.</figcaption>
+    </figure>
+    <dl class="specs">
+      <div><dt>Length × deck width</dt><dd>275 × 70 m</dd></div>
+      <div><dt>Draught: sailing / submerged</dt><dd>11 / 31 m</dd></div>
+      <div><dt>Deck under water</dt><dd>up to 16 m</dd></div>
+      <div><dt>Deadweight</dt><dd>≈ 117,000 t</dd></div>
+      <div><dt>Cargo</dt><dd>up to ~110,000 t</dd></div>
+      <div><dt>Bow</dt><dd>none: open deck end to end</dd></div>
+    </dl>
+    <div class="tablewrap"><table>
+      <thead><tr><th>Design decision</th><th>Why</th><th>Concept</th></tr></thead>
+      <tbody>
+        <tr><td>No forecastle, flat deck end to end</td><td>Cargo can be wider and longer than the deck and overhang it. The deck is watertight and is meant to have sea washing over it.</td><td><a href="#anat">Module 2</a></td></tr>
+        <tr><td>Huge ballast capacity</td><td>Sinking a 70 m wide deck 16 m under water means taking on tens of thousands of tonnes of water. Above the deck, each metre of draught is about 19,700 t of ballast (275 × 70 m box).</td><td><a href="#m3">Module 5</a>, <a href="#t2-3">2.3</a></td></tr>
+        <tr><td>Buoyancy casings at the deck edges</td><td>When the deck goes under, the waterplane collapses to whatever still pierces the surface. Casings far out to the sides keep a waterplane with a useful second moment, so the vessel stays stable while submerged. They can be moved to suit each cargo.</td><td><a href="#m2">Module 4</a>, <a href="#t9-5">9.5</a></td></tr>
+        <tr><td>Deckhouse at one side</td><td>Keeps the full width clear for cargo, and its own volume adds waterplane during the submerged stage.</td><td><a href="#m2">Module 4</a></td></tr>
+        <tr><td>Very wide (70 m) for her length</td><td>Large GM with a tall, heavy cargo on deck. Like the barge, she then rolls quickly, so cargo seafastening is designed for the motions of the voyage.</td><td><a href="#t7-4">7.4</a></td></tr>
+      </tbody>
+    </table></div>
+  </div>
+
+  <div class="topic" id="t14-6">
+    <h3><span class="tn">14.6</span>Sleipnir: a semi-submersible crane vessel</h3>
+    <div class="prose">
+      <p>The largest crane vessel when delivered in 2019: two revolving cranes of 10,000 t each on a semi-submersible hull, running on LNG. In September 2019 the two cranes together lifted a 15,300 t topsides module at the Leviathan gas field, a record for a crane vessel. She changes from a ship to a platform and back by ballasting.</p>
+    </div>
+    <figure class="fig sv-fig" data-ship="sleipnir">
+      <figcaption><strong>Model drawing, to scale</strong> for length, beam and the 49.5 m depth to the work deck. Pontoon, column and deckbox heights are approximate. The crane boom is 144 m; the hanging load is illustrative.</figcaption>
+    </figure>
+    <dl class="specs">
+      <div><dt>Length × width</dt><dd>220 × 102 m</dd></div>
+      <div><dt>Draught</dt><dd>12 to 32 m</dd></div>
+      <div><dt>Cranes</dt><dd>2 × 10,000 t</dd></div>
+      <div><dt>Hull</dt><dd>2 pontoons, 8 columns</dd></div>
+      <div><dt>Ballast pumps</dt><dd>8 × 3,250 m³/h</dd></div>
+      <div><dt>Record lift</dt><dd>15,300 t (2019)</dd></div>
+    </dl>
+    <div class="tablewrap"><table>
+      <thead><tr><th>Design decision</th><th>Why</th><th>Concept</th></tr></thead>
+      <tbody>
+        <tr><td>Semi-submersible hull</td><td>At operating draught only the columns cut the surface: a small waterplane, so a soft heave spring and natural periods well above most wave periods. Small motions are what make a 10,000 t lift possible offshore.</td><td><a href="#t9-5">9.5</a>, <a href="#m5">Module 7</a></td></tr>
+        <tr><td>Two draughts: ~12 m transit, deeper to work</td><td>Floating on the pontoons she has little drag and a big waterplane, so she sails efficiently. Ballasted down, she becomes a steady platform. The designers kept the pontoon draught shallow enough to moor at her shore base.</td><td><a href="#m3">Module 5</a></td></tr>
+        <tr><td>Eight columns, mid columns widened at the top</td><td>Many columns let waves pass between them. Similar column areas avoid coupling heave and pitch in long swell; extra area at the mid columns adds waterplane and stability for the heaviest tandem lifts.</td><td><a href="#m2">Module 4</a>, <a href="#m5">Module 7</a></td></tr>
+        <tr><td>Cranes at the stern</td><td>The load goes over the stern, away from the accommodation, with the whole hull length behind it to reach over a platform.</td><td><a href="#t5-3">5.3</a></td></tr>
+        <tr><td>26,000 m³/h of ballast pumps</td><td>Four pump rooms, each with two 3,250 m³/h pumps: about four hours to operating draught. During a lift, ballast is moved to keep her level as the load comes on and the crane slews; boom angle limits are only a few degrees.</td><td><a href="#t5-3">5.3</a>, <a href="#t2-3">2.3</a></td></tr>
+        <tr><td>Column height set by survival crests</td><td>The deckbox must stay clear of the highest wave crests in a storm: the air gap.</td><td><a href="#t13-5">13.5</a></td></tr>
+      </tbody>
+    </table></div>
+    <div class="explain">
+      <div class="why"><h4>Why ballast is the vessel's life support</h4><p>A semi-submersible's ballast system is not a convenience. It sets draught, trim, heel and stability through every stage of a lift, and a fault in it can flood the hull.</p></div>
+      <div class="myth"><h4>A warning from the same family</h4><p>In July 2005 the semi-submersible platform Thunder Horse was evacuated for Hurricane Dennis and was found listing heavily afterwards. The investigation found that ballast water had moved into manned spaces in the lower hull through faulty and wrongly installed check valves, and then spread through openings that should have been watertight. No hull breach: the ballast and bilge piping alone flooded her.</p></div>
+      <div class="decision"><h4>Design response</h4><p>Ballast systems on column-stabilised units get independent valve control, check valves that are verified in place, watertight integrity checks of every pipe and cable through each bulkhead, and stability calculations for an accidentally flooded compartment.</p></div>
+    </div>
+  </div>
+
+  <div class="topic" id="t14-7">
+    <h3><span class="tn">14.7</span>Pioneering Spirit: lifting a whole platform at once</h3>
+    <div class="prose">
+      <p>A twin-hulled vessel built to install or remove complete platform topsides in a single lift, by straddling the platform with a slot cut into her bow. She removed Shell's Brent Delta topsides (24,200 t) in 2017, and Brent Charlie (31,000 t) in 2024, a record for an offshore lift. She also lays pipelines, and lifts jackets with beams over her stern.</p>
+    </div>
+    <figure class="fig sv-fig" data-ship="ps">
+      <figcaption><strong>Model drawing.</strong> Plan to scale (hull 382 × 124 m, slot 122 × 59 m). The section is schematic: beam heights and the jacket are illustrative, and the sinkage figure treats the waterplane as rectangular. Step through the three stages.</figcaption>
+    </figure>
+    <dl class="specs">
+      <div><dt>Length × beam</dt><dd>382 × 124 m (477 m with beams)</dd></div>
+      <div><dt>Draught</dt><dd>10 to 27 m</dd></div>
+      <div><dt>Displacement</dt><dd>365,000 t transit, ~932,000 t max</dd></div>
+      <div><dt>Topsides lift</dt><dd>48,000 t (60,000 t upgrade)</dd></div>
+      <div><dt>Jacket lift</dt><dd>20,000 t</dd></div>
+      <div><dt>Station-keeping</dt><dd>DP3, 12 thrusters, ~95 MW</dd></div>
+    </dl>
+    <div class="tablewrap"><table>
+      <thead><tr><th>Design decision</th><th>Why</th><th>Concept</th></tr></thead>
+      <tbody>
+        <tr><td>Lift by deballasting, not by crane</td><td>Buoyancy does the lifting. Pumping out ballast makes the hull rise and carry the topsides on the beams: the same principle as a float-over, run in reverse. 31,000 t on beams would sink her about 0.75 m if no ballast went out.</td><td><a href="#t1-6">1.6</a>, <a href="#m3">Module 5</a></td></tr>
+        <tr><td>Slot between two bows</td><td>A crane must reach over and hang the load. Straddling the platform puts the load inside the hull's footprint instead: no outreach, no boom limits, and the lift rating is about 5% of her maximum displacement.</td><td><a href="#t5-3">5.3</a></td></tr>
+        <tr><td>Very wide (124 m)</td><td>Each half-hull must stay stable with half a platform's weight on its inner edge, and the whole vessel has huge waterplane stiffness. The hull was widened by 6.75 m during construction to give more room around platform legs.</td><td><a href="#m2">Module 4</a></td></tr>
+        <tr><td>Motion-compensated lifting beams</td><td>The vessel moves in waves, the platform does not. The beams absorb the relative motion and then lift the load clear quickly, so it is never struck twice.</td><td><a href="#m5">Module 7</a>, <a href="#case">case study</a></td></tr>
+        <tr><td>Dynamic positioning, DP3</td><td>No anchors among pipelines and platform legs. DP3 means any single failure, including fire or flood in one compartment, leaves enough thrusters to hold position.</td><td><a href="#m8">Module 11</a></td></tr>
+      </tbody>
+    </table></div>
+  </div>
+
+  <div class="topic" id="t14-8">
+    <h3><span class="tn">14.8</span>Hywind Scotland: a floating wind turbine on a spar</h3>
+    <div class="prose">
+      <p>The first commercial floating wind farm, switched on in 2017 about 25 km off Peterhead: five 6 MW turbines, each on a single steel spar that floats upright in 95 to 120 m of water. A spar is the most extreme answer in this module to "how do you stay upright?"</p>
+    </div>
+    <figure class="fig sv-fig" data-ship="hywind">
+      <figcaption><strong>Model drawing, to scale vertically.</strong> The taper and ballast levels are approximate, and G and B are illustrative. The anchors are several hundred metres out; the lines are drawn shortened.</figcaption>
+    </figure>
+    <dl class="specs">
+      <div><dt>Spar hull</dt><dd>91 m long, 14.5 m across</dd></div>
+      <div><dt>Draught</dt><dd>~78 m</dd></div>
+      <div><dt>Mass ballasted</dt><dd>&gt; 10,000 t (2,300 t steel)</dd></div>
+      <div><dt>Turbine</dt><dd>6 MW, rotor 154 m</dd></div>
+      <div><dt>Mooring</dt><dd>3 chains, suction anchors</dd></div>
+      <div><dt>Height above water</dt><dd>~175 to 178 m to blade tip</dd></div>
+    </dl>
+    <div class="tablewrap"><table>
+      <thead><tr><th>Design decision</th><th>Why</th><th>Concept</th></tr></thead>
+      <tbody>
+        <tr><td>Deep, ballasted cylinder</td><td>The turbine's mass and the rotor thrust act very high up. A waterplane cannot resist that: BM here is at most about 0.2 m. Instead, rock and water ballast at the bottom put G below B, so any tilt is righted like a pendulum.</td><td><a href="#t1-1">1.1</a>, <a href="#m2">Module 4</a></td></tr>
+        <tr><td>Slender where it cuts the surface</td><td>A small waterplane is a soft heave spring, so heave and pitch natural periods sit well above wave periods. Motion at the nacelle stays small.</td><td><a href="#t9-5">9.5</a></td></tr>
+        <tr><td>Three slack catenary lines</td><td>The spar may drift a little in surge and sway; the moorings only stop it wandering. Three lines at 120° hold from every direction.</td><td><a href="#m8">Module 11</a></td></tr>
+        <tr><td>Suction anchors</td><td>Large open-bottomed steel cans sucked into the seabed: quick to install, and they resist both horizontal and some vertical pull.</td><td><a href="#m8">Module 11</a></td></tr>
+        <tr><td>Turbine control tuned for a floating base</td><td>A normal turbine controller, pitching its blades as the wind changes, can feed energy into the tower's fore-and-aft rocking. The control is changed so it damps the motion instead of driving it.</td><td><a href="#m5">Module 7</a></td></tr>
+        <tr><td>Assembled in a deep fjord</td><td>With a 78 m draught, the spar cannot come to a normal quay. The turbines were fitted in sheltered deep water in Norway and the complete units towed to Scotland.</td><td><a href="#m6">Module 8</a></td></tr>
+      </tbody>
+    </table></div>
+  </div>
+
+  <div class="topic" id="t14-9">
+    <h3><span class="tn">14.9</span>ALP Striker: an ocean towing tug</h3>
+    <div class="prose">
+      <p>One of four long-haul towing and anchor-handling tugs built in Japan around 2016–17 for ocean towage of rigs and FPSOs. On sea trials she recorded 309.6 t of bollard pull, and she carries fuel to tow at full power for 45 days. A tug is the opposite of a barge: little cargo, a great deal of power, and a hull shaped around one line at the stern.</p>
+    </div>
+    <figure class="fig sv-fig" data-ship="striker">
+      <figcaption><strong>Model drawing, to scale</strong> for length, beam and draught. Depth and superstructure are approximate. Toggle the section to see girting.</figcaption>
+    </figure>
+    <dl class="specs">
+      <div><dt>Length × beam</dt><dd>88.9 × 21 m</dd></div>
+      <div><dt>Max draught</dt><dd>8.5 m</dd></div>
+      <div><dt>Bollard pull (trials)</dt><dd>309.6 t</dd></div>
+      <div><dt>Speed</dt><dd>13 kn service, 19 kn max</dd></div>
+      <div><dt>Endurance</dt><dd>45 days towing at full power</dd></div>
+      <div><dt>Winch</dt><dd>3 drums, 400 t</dd></div>
+    </dl>
+    <div class="tablewrap"><table>
+      <thead><tr><th>Design decision</th><th>Why</th><th>Concept</th></tr></thead>
+      <tbody>
+        <tr><td>Deep draught for her size</td><td>Bollard pull comes from propellers pushing water. Deep propellers stay immersed in waves and keep their grip; a tug that pitches its propellers out of the water loses thrust when it is most needed.</td><td><a href="#m6">Module 8</a></td></tr>
+        <tr><td>Low, long aft deck with a stern roller</td><td>The towline and anchor wires leave the vessel low and on the centreline, over a roller, so pull acts with the smallest heeling lever.</td><td><a href="#t1-1">1.1</a></td></tr>
+        <tr><td>High bow, superstructure forward</td><td>Keeps green water off the forward deck while heading into weather with a tow; the wheelhouse faces aft so the master can watch the line.</td><td><a href="#anat">Module 2</a></td></tr>
+        <tr><td>Protection against girting</td><td>If the tow sheers out to the side, a towline pulling abeam at deck level can roll the tug over in seconds. Gog ropes hold the line aft, the towing point is kept low, and the hook or winch has an emergency release.</td><td><a href="#m2">Module 4</a></td></tr>
+        <tr><td>Tug and tow gear must match</td><td>Her 310 t of pull would need towing gear with an MBL near 680 t at the usual factor; the barge in 14.2 has 231 t. The weakest link must be chosen before the tow, not discovered during it.</td><td><a href="#t13-6">13.6</a>, <a href="#t14-2">14.2</a></td></tr>
+      </tbody>
+    </table></div>
+  </div>
+
+  <div class="topic" id="t14-10">
+    <h3><span class="tn">14.10</span>Side by side</h3>
+    <div class="tablewrap"><table>
+      <thead><tr><th>Vessel</th><th>Job</th><th>Stays upright by</th><th>Stays put or moves by</th><th>Key number</th></tr></thead>
+      <tbody>
+        <tr><td><a href="#t14-2">Deck barge</a></td><td>Carry cargo on deck</td><td>Width (BM ≈ 15.8 m)</td><td>Towed by a tug</td><td>Deck edge under at ~4.5°</td></tr>
+        <tr><td><a href="#t14-3">Ever Given</a></td><td>Carry 20,000 containers fast</td><td>Width, with GM kept modest</td><td>Own engine and propeller</td><td>L/B ≈ 6.8</td></tr>
+        <tr><td><a href="#t14-4">Prelude FLNG</a></td><td>Process and store gas at sea</td><td>Width</td><td>Turret mooring, weathervaning</td><td>25 years on station</td></tr>
+        <tr><td><a href="#t14-5">BOKA Vanguard</a></td><td>Carry whole platforms</td><td>Width; casings when submerged</td><td>Own engines</td><td>16 m of water over deck</td></tr>
+        <tr><td><a href="#t14-6">Sleipnir</a></td><td>Heavy lifts offshore</td><td>Spread-out columns</td><td>DP or moorings while lifting</td><td>2 × 10,000 t cranes</td></tr>
+        <tr><td><a href="#t14-7">Pioneering Spirit</a></td><td>Install or remove whole topsides</td><td>Width of two hulls</td><td>DP3</td><td>48,000 t single lift</td></tr>
+        <tr><td><a href="#t14-8">Hywind spar</a></td><td>Hold a wind turbine steady</td><td>Low G (BM ≤ 0.2 m)</td><td>Three catenary lines</td><td>78 m draught</td></tr>
+        <tr><td><a href="#t14-9">ALP Striker</a></td><td>Tow anything anywhere</td><td>Width and low tow point</td><td>Own engines</td><td>~310 t bollard pull</td></tr>
+      </tbody>
+    </table></div>
+    <p class="src">Particulars are from builders', owners' and operators' published specifications and widely reported figures; sources differ slightly, and ratings change with upgrades. Derived numbers (BM, roll period, wind force, squat, sinkage) use the guide's simple formulas and are estimates for understanding, not for design.</p>
+  </div>
+
+  <div class="recap">
+    <h3>What you should now understand</h3>
+    <ul>
+      <li>Every vessel's proportions trace back to its job: carry, lift, store, tow or hold still.</li>
+      <li>Width buys stability (BM grows with beam squared) but makes a stiff, quick-rolling hull; a small waterplane buys gentle motion but needs another source of stability.</li>
+      <li>Three ways to stay upright: a wide waterplane, columns spread far apart, or G below B.</li>
+      <li>Ballast is a design tool: it turns a ship into a platform (Sleipnir), sinks a deck (BOKA Vanguard) or lifts a platform (Pioneering Spirit).</li>
+      <li>Moving or holding a vessel is its own design problem: engines, tugs and towlines, turrets and moorings, or DP.</li>
+    </ul>
+  </div>
+  <div class="cc"><span class="cc-label">In practice</span><p>When a report names a vessel, look up its main particulars first: length, beam, depth, draught, displacement and lightship. With the formulas in this guide, those six numbers already tell you roughly how stiff it is in roll, how deep it sits, how much ballast a change of draught takes and how much wind it catches. The detailed analysis then refines what the particulars predict.</p></div>
 </section>
 
 <section class="module" id="case" aria-labelledby="case-h">
@@ -3420,7 +3766,7 @@ const Gloss = {
 };
 
 /* Underline the first use of each glossary term inside `root`, skipping keys in `seen`. */
-const AUTO_SKIP = 'svg,summary,button,a,h1,h2,h3,h4,h5,label,legend,code,.eq,.readout,.chip,.tag,.exp-title,canvas,script,style,select,option,.live,.cc-label,.q-label,.eyebrow,.num,.verdict,.unit,th,.transport,.btnrow,.case-steps,.chain,.tip,.drawer,.toc,.meters';
+const AUTO_SKIP = 'svg,summary,button,a,h1,h2,h3,h4,h5,label,legend,code,.eq,.readout,.chip,.tag,.exp-title,canvas,script,style,select,option,.live,.cc-label,.q-label,.eyebrow,.num,.verdict,.unit,th,.transport,.btnrow,.case-steps,.chain,.tip,.drawer,.toc,.meters,dt';
 let _aliasRes = null;
 function aliasRes() {
   if (_aliasRes) return _aliasRes;
@@ -3578,7 +3924,7 @@ function bench(id) {
   };
 }
 
-const MODULE_NAMES = { anat: 'Module 2', m1: 'Module 3', m2: 'Module 4', m3: 'Module 5', m4: 'Module 6', m5: 'Module 7', m6: 'Module 8', m7: 'Module 10', m8: 'Module 11', m9: 'Module 12', m10: 'Module 13', m11: 'Module 9', m12: 'Module 1', case: 'Case study', units: 'Units' };
+const MODULE_NAMES = { anat: 'Module 2', m1: 'Module 3', m2: 'Module 4', m3: 'Module 5', m4: 'Module 6', m5: 'Module 7', m6: 'Module 8', m7: 'Module 10', m8: 'Module 11', m9: 'Module 12', m10: 'Module 13', m11: 'Module 9', m12: 'Module 1', ships: 'Module 14', case: 'Case study', units: 'Units' };
 const INIT = [];   // module initialisers, run after DOM ready
 
 /* ===================== Glossary: key → [term, definition, module] ===================== */
@@ -3992,6 +4338,12 @@ const GLOSSARY = {
   'hertz': ['Hz and rad/s', 'Units of frequency. Hertz counts cycles per second (1 ÷ period); radians per second is 2π ÷ period. A 10 s period is 0.1 Hz or 0.63 rad/s.', 'units'],
   'radian': ['Radian', 'The angle unit used inside calculations: 1 radian = 57.3°, and a full turn is 2π radians. Reports quote angles in degrees.', 'units'],
   'g-accel': ['g (acceleration due to gravity)', '9.81 m/s². Accelerations are often given as fractions of g: an acceleration of 0.2 g pushes on cargo with 20% of its weight.', 'units'],
+  // ---- Real vessels (Module 14) ----
+  'parametric-roll': ['Parametric roll', 'Roll that builds up quickly in head or following seas, not because waves push on the side but because the waterplane, and so GM, changes as crests and troughs pass along the hull. Worst when the wave encounter period is about half the roll period. Large container ships with fine ends and wide sterns are prone to it.', 'ships'],
+  'girting': ['Girting (girding)', 'A tug being pulled over sideways by its own towline when the tow sheers out abeam. The line pulls at deck level with a large heeling lever and can capsize the tug in seconds. Prevented by gog ropes that hold the line aft, low towing points and quick-release gear.', 'ships'],
+  'heavy-transport-vessel': ['Heavy transport vessel (HTV)', 'A semi-submersible ship with a long, low, open deck. It ballasts down until the deck is under water, a floating cargo such as a platform hull is positioned over it, and it deballasts to lift the cargo dry for the voyage.', 'ships'],
+  'flng': ['FLNG', 'Floating liquefied natural gas facility: an FPSO-type hull that cools natural gas to a liquid at sea, stores it and offloads it to LNG carriers.', 'ships'],
+  'windage': ['Windage', 'The area of a vessel and its cargo exposed to the wind, and the wind force on it. Large for container ships, tall deck cargoes and high-sided vessels.', 'ships'],
   // ---- Tools and organisations ----
   'orcaflex': ['OrcaFlex', 'Orcina\'s software for dynamic analysis of moorings, risers, towlines, lifts and other marine systems over time.', 'm8'],
   'aqwa': ['ANSYS AQWA', 'Hydrodynamics software that calculates wave loads and motions of floating bodies, including RAOs, added mass and damping, and interaction between several bodies.', 'm5'],
@@ -4095,6 +4447,7 @@ const GLOSS_ALIAS = {
   'dp': ['dynamic positioning'], 'static': ['static analysis'], 'dynamic': ['dynamic analysis'], 'global-analysis': ['global analysis'], 'local-analysis': ['local analysis'],
   'station-keeping': ['station-keeping', 'stationkeeping'], 'geotechnical': ['geotechnical'], 'offset': ['offsets?'], 'mws': ['marine warranty surveyors?', 'marine warranty'],
   'class-society': ['classification societ(y|ies)', 'class societ(y|ies)'], 'utilisation': ['utilisation'], 'alpha-factor': ['forecast factor', 'forecast uncertainty factor'],
+  'parametric-roll': ['parametric roll'], 'girting': ['girting'], 'heavy-transport-vessel': ['heavy transport vessels?'], 'flng': ['FLNG'], 'windage': ['windage'],
 };
 // Aliases matched case-sensitively (abbreviations that clash with ordinary words or units)
 const GLOSS_CASE = new Set(['daf', 'hmax', 'ukc', 'kilonewton', 'megapascal', 'gm', 'gz', 'kg', 'hs', 'api', 'abs', 'imo', 'dnv', 'tpc', 'fpso', 'ansys', 'fea', 'rao', 'psi', 'meganewton', 'hertz']);
@@ -10052,6 +10405,439 @@ INIT.push(() => {
   ]);
 });
 
+/* ===================== Module 14: Real vessels ===================== */
+/* Model drawings built from published main dimensions, in metres, so every drawing is to scale
+   (deckhouses, cranes and the like are simplified). x runs forward from the stern or across from
+   the centreline, z up from the keel; a view V(s, ox, oy) maps metres to SVG units at s per metre.
+   Each figure.sv-fig[data-ship] gets its drawing, plus state buttons where the vessel changes shape. */
+const Ships = (() => {
+  const f = n => +(+n).toFixed(1);
+  const RHO = 1.025;
+  const V = (s, ox, oy) => ({ s, X: x => f(ox + x * s), Y: z => f(oy - z * s) });
+  const pts = (v, a) => a.map(([x, z]) => v.X(x) + ',' + v.Y(z)).join(' ');
+  const poly = (v, c, a) => `<polygon class="${c}" points="${pts(v, a)}"/>`;
+  const pline = (v, c, a) => `<polyline class="${c}" points="${pts(v, a)}"/>`;
+  const box = (v, c, x, z, w, h) => `<rect class="${c}" x="${v.X(x)}" y="${v.Y(z + h)}" width="${f(w * v.s)}" height="${f(h * v.s)}"/>`;
+  const ln = (v, c, x1, z1, x2, z2) => `<line class="${c}" x1="${v.X(x1)}" y1="${v.Y(z1)}" x2="${v.X(x2)}" y2="${v.Y(z2)}"/>`;
+  const circ = (v, c, x, z, r) => `<circle class="${c}" cx="${v.X(x)}" cy="${v.Y(z)}" r="${f(r * v.s)}"/>`;
+  // text, leaders and arrows in SVG units
+  const T = (x, y, s, c = '', a = 'start') => `<text class="${c}" x="${f(x)}" y="${f(y)}" text-anchor="${a}">${s}</text>`;
+  const TL = (x, y, lines, c = '', a = 'start', dy = 15) => lines.map((s, i) => T(x, y + i * dy, s, c, a)).join('');
+  const lead = (x1, y1, x2, y2) => `<line class="lead" x1="${f(x1)}" y1="${f(y1)}" x2="${f(x2)}" y2="${f(y2)}"/>`;
+  // label at (tx, ty) (one line or several) with a leader to the metre point (x, z), drawn to the nearest side of the text
+  const call = (v, x, z, tx, ty, s, a = 'start') => {
+    const lines = Array.isArray(s) ? s : [s], w = Math.max(...lines.map(l => l.length)) * 7.6, ax = v.X(x), ay = v.Y(z);
+    const l = a === 'start' ? tx : a === 'end' ? tx - w : tx - w / 2, r = l + w, bot = ty + (lines.length - 1) * 15;
+    const [ex, ey] = ax < l ? [l - 4, ty - 4] : ax > r ? [r + 4, ty - 4] : [clamp(ax, l, r), ay > bot ? bot + 5 : ty - 14];
+    return lead(ax, ay, ex, ey) + TL(tx, ty, lines, '', a);
+  };
+  const arrow = (x1, y1, x2, y2, c, w = 2.4) => {
+    const a = Math.atan2(y2 - y1, x2 - x1), h = 4 + w * 2.2, p = [[x2, y2], [x2 - h * Math.cos(a - 0.4), y2 - h * Math.sin(a - 0.4)], [x2 - h * Math.cos(a + 0.4), y2 - h * Math.sin(a + 0.4)]];
+    return `<line class="${c}" style="stroke-width:${w}" x1="${f(x1)}" y1="${f(y1)}" x2="${f(x2 - h * 0.7 * Math.cos(a))}" y2="${f(y2 - h * 0.7 * Math.sin(a))}"/><polygon class="${c} ah" points="${p.map(q => f(q[0]) + ',' + f(q[1])).join(' ')}"/>`;
+  };
+  // dimension lines between metre points, label in px offset
+  const dimH = (v, x1, x2, z, s, dy = 0) => {
+    const y = v.Y(z) + dy, a = v.X(x1), b = v.X(x2);
+    return `<g class="dim"><line x1="${a}" y1="${f(y)}" x2="${b}" y2="${f(y)}"/><line x1="${a}" y1="${f(y - 5)}" x2="${a}" y2="${f(y + 5)}"/><line x1="${b}" y1="${f(y - 5)}" x2="${b}" y2="${f(y + 5)}"/></g>` + T((a + b) / 2, y - 5, s, 'dimt', 'middle');
+  };
+  const dimV = (v, x, z1, z2, s, dx = 0, a = 'end') => {
+    const xx = v.X(x) + dx, p = v.Y(z1), q = v.Y(z2);
+    return `<g class="dim"><line x1="${f(xx)}" y1="${p}" x2="${f(xx)}" y2="${q}"/><line x1="${f(xx - 5)}" y1="${p}" x2="${f(xx + 5)}" y2="${p}"/><line x1="${f(xx - 5)}" y1="${q}" x2="${f(xx + 5)}" y2="${q}"/></g>` + T(xx + (a === 'end' ? -7 : 7), (p + q) / 2 + 4, s, 'dimt', a);
+  };
+  // G, B, M markers in the guide's colours
+  const mk = (v, k, x, z) => `<g class="mk mk-${k}"><circle cx="${v.X(x)}" cy="${v.Y(z)}" r="8"/><text x="${v.X(x)}" y="${f(v.Y(z) + 4)}" text-anchor="middle">${k.toUpperCase()}</text></g>`;
+  // sea below the waterline over [x1, x2]; drawn first, with a translucent overlay after the hull
+  const seaBack = (v, x1, x2, zw, zb) => box(v, 'sea', x1, zb, x2 - x1, zw - zb);
+  const seaOver = (v, x1, x2, zw, zb) => box(v, 'seao', x1, zb, x2 - x1, zw - zb) + ln(v, 'wl', x1, zw, x2, zw);
+  const seabed = (v, x1, x2, z, d = 6) => box(v, 'bed', x1, z - d, x2 - x1, d);
+  const rot = (deg, cx, cy, body) => `<g transform="rotate(${f(deg)} ${f(cx)} ${f(cy)})">${body}</g>`;
+  const svg = (w, h, alt, body) => `<svg class="sv" viewBox="0 0 ${w} ${h}" role="img" aria-label="${alt}">${body}</svg>`;
+
+  /* ---------------- Numbers quoted in the prose (checked by the test harness) ---------------- */
+  const rollPeriod = (B, GM) => TAU * 0.4 * B / Math.sqrt(GRAV * GM);
+  const icorels = (vol, L, h, kn) => { const F = kn * KN / Math.sqrt(GRAV * h); return 2.4 * vol / (L * L) * F * F / Math.sqrt(1 - F * F); };
+  const windForce = (kn, A, Cd = 1) => 0.5 * 1.225 * (kn * KN) ** 2 * Cd * A;   // N
+  const calc = {
+    barge: (() => {
+      const L = 91.44, B = 30.48, D = 6.096, Tm = 4.891, BM = B * B / (12 * Tm), fb = D - Tm;
+      return { L, B, D, T: Tm, BM, KB: Tm / 2, KM: Tm / 2 + BM, fb, edge: Math.atan(fb / (B / 2)) * R2D, roll10: rollPeriod(B, 10),
+        perMetre: L * B * RHO, pumpHours: L * B / (750 + 500), gearT: 2270 / GRAV, gearRatio: 2270 / GRAV / 105, deckKPa: 25 * GRAV };
+    })(),
+    eg: (() => {
+      const L = 400, B = 58.8, vol = 240000, h = 24;   // displaced volume: Cb 0.65 assumed at the 15.7 m canal draught
+      return { L, B, LB: L / B, BT: B / 14.5, roll2: rollPeriod(B, 2), wind35: windForce(35, 14000), sq8: icorels(vol, L, h, 8), sq12: icorels(vol, L, h, 12) };
+    })(),
+    prelude: { T: 600000 / (RHO * 488 * 74) },
+    vanguard: { perMetre: 275 * 70 * RHO, area: 275 * 70 },
+    ps: (() => { const A = (382 - 122) * 124 + 2 * 32.5 * 122; return { A, perMetre: A * RHO, sink: 31000 / (A * RHO), share: 48000 / 932000 }; })(),
+    sleipnir: { pumps: 4 * 2 * 3250 },
+    hywind: (() => { const I = Math.PI * 14.5 ** 4 / 64, vol = 10000 / RHO; return { I, vol, BM: I / vol }; })(),
+    striker: { bp: 309.6, needMBL: 309.6 * 2270 / GRAV / 105 },
+  };
+  calc.ratioBM = calc.barge.BM / calc.hywind.BM;
+
+  /* ---------------- Profiles (side views), shared by the line-up and the detail drawings ---------------- */
+  const P = {};
+  // Ever Given: L 400, D 32.9, design draught 14.5
+  P.eg = { L: 400, D: 32.9, T: 14.5, top: 64, name: 'Ever Given', href: 't14-3' };
+  P.eg.draw = v => {
+    const D = 32.9;
+    let s = poly(v, 'hull', [[0, D], [0, 24], [3, 19], [9, 15], [16, 11], [26, 5], [38, 1.2], [48, 0], [372, 0], [384, 0.6], [392, 2.6], [397, 5.6], [398, 8.6], [396, 11.2], [391, 13.2], [390, 15.5], [394, 23], [398, 30], [400, D + 2], [352, D + 2], [352, D]]);
+    s += poly(v, 'hull', [[4, 15], [11, 15], [11, 2], [5, 3]]) + `<ellipse class="prop" cx="${v.X(17)}" cy="${v.Y(7)}" rx="${f(1.4 * v.s)}" ry="${f(5 * v.s)}"/>`;
+    for (let x = 34, i = 0; x < 388; x += 13, i++) {
+      if ((x > 44 && x < 64) || (x > 252 && x < 274)) continue;
+      const h = x > 340 ? 20.8 - (x - 340) * 0.13 : x < 60 ? 18.2 : 20.8;
+      s += box(v, i % 2 ? 'box' : 'box box2', x, D + 0.4, 12.2, h);
+    }
+    s += box(v, 'sup', 258, D, 12, 28) + box(v, 'sup', 255, D + 26, 18, 3.4) + box(v, 'win', 256, D + 27, 16, 1.2);
+    s += poly(v, 'sup', [[48, D], [61, D], [60, D + 27], [50, D + 28]]);
+    return s;
+  };
+  // 300 ft North Sea deck barge: 91.44 × 30.48 × 6.096 m, loaded draught 4.891 m
+  P.barge = { L: 91.44, D: 6.096, T: 4.891, top: 9.6, name: 'Deck barge', href: 't14-2' };
+  P.barge.draw = (v, o = {}) => {
+    const D = 6.096;
+    let s = poly(v, 'hull', [[1.5, 3.68], [6.5, 0.61], [6.5, -0.0], [1.5, -0.0]]);
+    s += poly(v, 'hull', [[0, D], [0, 4.6], [7.5, 0], [83, 0], [91.44, 4.4], [91.44, D]]);
+    s += poly(v, 'sup', [[85.6, D], [87.4, D], [88.6, D + 3.5], [87.6, D + 3.5]]);
+    if (o.cargo) s += box(v, 'cargo', 30, D + 1.2, 32, 17) + box(v, 'grill', 29, D, 34, 1.2);
+    return s;
+  };
+  // BOKA Vanguard: L 275, cargo deck 70 m wide, depth 15 (deck 16 m under at a 31 m draught)
+  P.vanguard = { L: 275, D: 15, T: 11, top: 49, name: 'BOKA Vanguard', href: 't14-5' };
+  P.vanguard.draw = (v, o = {}) => {
+    const D = 15;
+    let s = poly(v, 'hull', [[0, D], [0, 1.5], [2, 0], [262, 0], [270, 1.6], [274, 5], [275, 9], [275, D]]);
+    s += box(v, 'sup', 248, D, 22, 26) + box(v, 'sup', 252, D + 26, 15, 6) + box(v, 'win', 253, D + 29, 13, 1.4);
+    s += box(v, 'sup', 3, D, 11, 15);
+    if (o.cargo) {
+      const z0 = o.cargoZ !== undefined ? o.cargoZ : D + 0.8;
+      s += box(v, 'cargo', 50, z0, 170, 10) + box(v, 'cargo', 56, z0 + 10, 20, 34) + box(v, 'cargo', 194, z0 + 10, 20, 34) + box(v, 'cargo', 50, z0 + 44, 170, 12);
+    }
+    return s;
+  };
+  // Sleipnir: L 220, work deck 49.5 m above keel. Pontoon, column and deckbox heights approximate.
+  P.sleipnir = { L: 220, D: 49.5, T: 12, top: 84, name: 'Sleipnir', href: 't14-6' };
+  P.sleipnir.draw = (v, o = {}) => {
+    const PH = 13, CB = 37, D = 49.5;
+    let s = poly(v, 'hull', [[0, PH], [0, 6], [20, 0], [208, 0], [215, 2], [219, 6], [220, 9.5], [218, PH]]);
+    [[22, 50], [74, 102], [126, 154], [178, 206]].forEach(([a, b]) => { s += box(v, 'hull', a, PH, b - a, CB - PH); });
+    s += box(v, 'hull', 20, CB, 180, D - CB);
+    s += box(v, 'sup', 176, D, 24, 22) + box(v, 'win', 178, D + 19, 20, 1.4);
+    // aft crane: tub, house and boom; o.boom = angle above horizontal, towards the stern when > 90
+    const cx = 34, cz = D + 12, ang = (o.boom !== undefined ? o.boom : 8) * D2R, bl = 144;
+    s += box(v, 'crane', cx - 12, D, 24, 6) + box(v, 'crane', cx - 10, D + 6, 20, 9);
+    const tx = cx + bl * Math.cos(ang), tz = cz + bl * Math.sin(ang);
+    s += ln(v, 'boom', cx, cz, tx, tz) + ln(v, 'boomt', cx, cz, tx, tz);
+    if (o.load) s += ln(v, 'rig', tx, tz, tx, o.load + 12) + box(v, 'cargo', tx - 15, o.load - 10, 30, 22);
+    return s;
+  };
+  // Prelude FLNG: L 488. Hull depth and draught are not published; drawn about 40 m deep at 16 m.
+  P.prelude = { L: 488, D: 40, T: 16.2, top: 105, name: 'Prelude FLNG', href: 't14-4' };
+  P.prelude.draw = (v, o = {}) => {
+    const D = 40;
+    let s = poly(v, 'hull', [[0, D], [0, 6], [6, 0], [474, 0], [483, 3], [487, 10], [488, D]]);
+    for (let x = 70; x < 400; x += 30) s += box(v, x % 60 ? 'proc' : 'proc proc2', x, D, 26, 18 + (x % 90 === 10 ? 8 : 0));
+    s += box(v, 'sup', 446, D, 34, 30) + box(v, 'sup', 450, D + 30, 24, 4) + box(v, 'win', 448, D + 26, 30, 1.6);
+    s += box(v, 'turret', 425, D, 14, 93 - D) + box(v, 'turret', 427, 0, 10, D);
+    s += poly(v, 'sup', [[10, D], [22, D], [17, 104], [15, 104]]) + ln(v, 'flare', 16, 104, 16, 105);
+    if (o.lines) s += pline(v, 'moor', [[432, 0], [470, -28]]) + pline(v, 'moor', [[432, 0], [394, -28]]);
+    return s;
+  };
+  // Pioneering Spirit: hull 382 m, depth 30 m; tilting jacket-lift beams over the stern (to 477 m)
+  P.ps = { L: 382, D: 30, T: 10, top: 64, name: 'Pioneering Spirit', href: 't14-7', x0: 95 };
+  P.ps.draw = v => {
+    const D = 30;
+    let s = poly(v, 'hull', [[0, D], [0, 4], [6, 0], [370, 0], [378, 3], [381, 9], [382, D]]);
+    s += box(v, 'sup', 150, D, 44, 26) + box(v, 'win', 152, D + 22, 40, 1.6);
+    s += poly(v, 'crane', [[4, D], [-95, D + 30], [-95, D + 34], [6, D + 6]]) + poly(v, 'crane', [[18, D], [0, D + 8], [10, D + 18], [26, D]]);
+    s += box(v, 'crane', 300, D, 70, 9);
+    return s;
+  };
+  // ALP Striker: L 88.9, B 21, max draught 8.5; depth to main deck about 11 m (assumed)
+  P.striker = { L: 88.9, D: 11, T: 8.5, top: 41, name: 'ALP Striker', href: 't14-9' };
+  P.striker.draw = v => {
+    const D = 11, F = D + 2.8;
+    let s = poly(v, 'hull', [[0, D], [0, 6], [5, 3.2], [12, 1], [20, 0], [72, 0], [80, 0.8], [85, 2.8], [87.5, 6], [88.9, F + 0.6], [56, F], [56, D]]);
+    s += poly(v, 'hull', [[1.5, 6], [4.5, 6], [4.5, 1.5], [1.5, 1.8]]) + `<ellipse class="prop" cx="${v.X(8)}" cy="${v.Y(3)}" rx="${f(0.9 * v.s)}" ry="${f(2.6 * v.s)}"/>`;
+    s += box(v, 'sup', 58, F, 22, 10) + box(v, 'sup', 60, F + 10, 17, 4.5) + box(v, 'win', 60.5, F + 11.5, 16, 1.4);
+    s += poly(v, 'sup', [[52, D], [57, D], [57, F + 13], [54, F + 13]]) + ln(v, 'mast', 70, F + 14.5, 70, F + 26);
+    s += box(v, 'crane', 44, D, 9, 3.6) + circ(v, 'crane', 1.2, D - 0.6, 1.4);
+    s += circ(v, 'thr', 82, 2.6, 1.1);
+    return s;
+  };
+  // Hywind Scotland spar, side view: 91 m hull (draught 78 m), 14.5 m wide, hub about 101 m above water
+  P.hywind = { L: 20, D: 91, T: 78, top: 256, name: 'Hywind Scotland', href: 't14-8' };
+  P.hywind.draw = (v, o = {}) => {
+    const c = o.cx || 0, W = 78, hub = W + 101, R = 77;
+    let s = poly(v, 'hull', [[c - 7.25, 0], [c + 7.25, 0], [c + 7.25, 60], [c + 4.75, 68], [c + 4.75, 91], [c - 4.75, 91], [c - 4.75, 68], [c - 7.25, 60]]);
+    if (o.ballast) s += box(v, 'solidb', c - 7.25, 0, 14.5, 20) + box(v, 'ball', c - 7.25, 20, 14.5, 22);
+    s += poly(v, 'tower', [[c - 3.2, 91], [c + 3.2, 91], [c + 2, hub - 2], [c - 2, hub - 2]]);
+    s += box(v, 'sup', c - (o.front ? 3 : 10), hub - 2, o.front ? 6 : 14, 5);
+    if (o.front) [90, 210, 330].forEach(a => { s += ln(v, 'blade', c, hub + 0.5, c + R * Math.cos(a * D2R), hub + 0.5 + R * Math.sin(a * D2R)); });
+    else s += ln(v, 'blade', c - 4, hub + 0.5 - R, c - 4, hub + 0.5 + R);
+    return s;
+  };
+
+  /* ---------------- 14.1 Line-up to scale ---------------- */
+  function lineup() {
+    const s = 1.75, x0 = 40, rows = [
+      [['prelude', 0]], [['eg', 0]], [['ps', 0]], [['vanguard', 0], ['sleipnir', 295]], [['barge', 0], ['striker', 120], ['hywind', 250]],
+    ];
+    let y = 0, body = '';
+    rows.forEach(row => {
+      const top = Math.max(...row.map(([k]) => P[k].top - P[k].T)), bot = Math.max(...row.map(([k]) => k === 'hywind' ? 78 : P[k].T));
+      const wl = y + 34 + top * s;
+      const v0 = V(s, x0, wl);
+      body += box(v0, 'sea', -10, -bot - 4, 560, bot + 4);
+      row.forEach(([k, at]) => {
+        const p = P[k], vv = k === 'hywind' ? V(s, x0 + (at + 10) * s, wl + 78 * s) : V(s, x0 + (at + (p.x0 || 0)) * s, wl + p.T * s);
+        const tag = k === 'hywind' ? 'Hywind Scotland · ~255 m keel to tip' : k === 'ps' ? `${p.name} · 382 m (477 m with beams)` : `${p.name} · ${fmt(p.L, 0)} m`;
+        body += `<a href="#${p.href}" class="lu">${p.draw(vv)}${T(x0 + at * s, y + 26, tag, 'lut')}</a>`;
+      });
+      body += box(v0, 'seao', -10, -bot - 4, 560, bot + 4) + ln(v0, 'wl', -10, 0, 550, 0);
+      y = wl + bot * s + 14;
+    });
+    // 100 m scale bar
+    const v = V(s, x0, y + 20);
+    body += `<g class="dim"><line x1="${v.X(0)}" y1="${f(y + 20)}" x2="${v.X(100)}" y2="${f(y + 20)}"/>${[0, 50, 100].map(m => `<line x1="${v.X(m)}" y1="${f(y + 14)}" x2="${v.X(m)}" y2="${f(y + 26)}"/>`).join('')}</g>` + T(v.X(110), y + 25, '100 m · everything on this page is drawn at this one scale', 'dimt');
+    return svg(1000, f(y + 40), 'All eight vessels in side view at one scale, each on its waterline: Prelude FLNG 488 m, Ever Given 400 m, Pioneering Spirit 382 m, BOKA Vanguard 275 m and Sleipnir 220 m, then the 91 m deck barge, the 89 m tug ALP Striker and the Hywind Scotland spar wind turbine standing 253 m tall from keel to blade tip.', body);
+  }
+
+  /* ---------------- Detail drawings ---------------- */
+  const D = {};
+  D.barge = st => {
+    const c = calc.barge, p = P.barge, v = V(7.6, 175, 250);
+    let s = seaBack(v, -12, 104, p.T, -4) + p.draw(v, { cargo: true }) + seaOver(v, -12, 104, p.T, -4);
+    s += dimH(v, 0, 91.44, -1, '91.44 m (300 ft) long', 30) + dimV(v, 0, 0, p.T, 'draught 4.89 m', -22) + dimV(v, 0, p.T, 6.096, 'freeboard 1.2 m', -22);
+    s += call(v, 4, 1.4, 200, 322, 'skegs keep her running straight under tow', 'start');
+    s += call(v, 87.4, 8.5, 905, 150, 'breakwater', 'end') + call(v, 88, 2.4, 960, 322, 'raked bow', 'end');
+    s += call(v, 30, 18, 380, 76, ['deck cargo on a grillage', '(example): its G sits', 'high above the deck'], 'end');
+    s += T(30, 22, 'SIDE VIEW', 'hdr');
+    // section
+    const w = V(8.6, 300, 610), B2 = c.B / 2, ang = st === 'heel' ? c.edge : 0;
+    let sec = poly(w, 'hull', [[-B2, 6.096], [-B2, 0.8], [-B2 + 0.8, 0], [B2 - 0.8, 0], [B2, 0.8], [B2, 6.096]]);
+    sec += ln(w, 'bhd', -B2 / 3, 0.2, -B2 / 3, 6.0) + ln(w, 'bhd', B2 / 3, 0.2, B2 / 3, 6.0);
+    sec += box(w, 'grill', -10, 6.096, 20, 0.9) + box(w, 'cargo', -9, 6.996, 18, 17);
+    sec += mk(w, 'g', 0, 9.5) + mk(w, 'm', 0, c.KM);
+    const tb = Math.tan(ang * D2R), bY = c.BM * tb, bZ = c.KB + c.BM * tb * tb / 2;
+    s += T(30, 372, 'CROSS-SECTION', 'hdr');
+    s += seaBack(w, -24, 24, c.T, -2);
+    s += rot(-ang, w.X(0), w.Y(c.T), sec + mk(w, 'b', -bY, bZ));
+    s += seaOver(w, -24, 24, c.T, -2);
+    if (!ang) {
+      s += dimH(w, -B2, B2, 0, '30.48 m beam', 26) + call(w, -B2 / 3, 3, 40, 500, ['longitudinal', 'bulkheads'], 'start');
+      s += lead(w.X(0) + 10, w.Y(c.KM), 470, 424) + TL(474, 420, ['M: 18.3 m above the keel.', 'BM = B² ÷ 12T = 15.8 m:', 'a 30 m wide box is very stiff']);
+      s += TL(474, 490, ['G with tall cargo: well above deck,', 'yet GM is still large (say 10 m).']);
+      s += TL(474, 550, ['Roll period 0.8 × B ÷ √GM ≈ 7.7 s:', 'short and snappy, among common waves.']);
+    } else {
+      s += TL(520, 430, [`Heeled ${fmt(c.edge, 1)}°: the deck edge reaches the water.`, 'Beyond this the waterplane stops growing,', 'so GZ peaks soon after (Module 4).', '', 'B has moved to the low side, under M.', 'Freeboard, not GM, limits the range.']);
+    }
+    return svg(1000, 650, 'Side view of the 91 m deck barge at its loaded draught with an example deck cargo on a grillage, raked bow and stern, skegs and breakwater; and a cross-section showing two longitudinal bulkheads, G above the deck, B low in the hull and M high above. In the heeled state the section is tilted until the deck edge touches the water.', s);
+  };
+  D.eg = () => {
+    const p = P.eg, c = calc.eg, v = V(2.2, 70, 250);
+    let s = seaBack(v, -10, 412, p.T, -4) + p.draw(v) + seaOver(v, -10, 412, p.T, -4);
+    s += dimH(v, 0, 400, 0, '400 m long', 34) + dimV(v, 0, 0, p.T, '14.5 m', -10) + dimV(v, 0, p.T, 32.9, '18.4 m', -10);
+    s += call(v, 264, 62, 600, 58, ['bridge forward of midships:', 'the officers must see over the stacks'], 'start');
+    s += call(v, 54, 60, 120, 70, ['engine and funnel aft,', 'near the propeller'], 'start');
+    s += call(v, 160, 53, 300, 112, '8 to 10 tiers of containers on deck', 'middle');
+    s += call(v, 396, 7, 900, 312, 'bulbous bow', 'end') + call(v, 16, 4, 140, 312, 'single propeller, ~60 MW', 'start');
+        s += T(20, 24, 'SIDE VIEW', 'hdr');
+    // canal section
+    const w = V(3.3, 270, 620), B2 = 29.4, Dd = 32.9, h = 24, Tt = 15.7;
+    s += T(20, 360, 'IN THE CANAL · CROSS-SECTION', 'hdr');
+    s += box(w, 'sea', -74, Tt - h, 186, h) + poly(w, 'bed', [[-76, Tt - h - 4], [-76, Tt - h], [56, Tt - h], [104, Tt + 3], [112, Tt + 3], [112, Tt - h - 4]]);
+    let sec = poly(w, 'hull', [[-B2, Dd], [-B2, 3], [-B2 + 3, 0], [B2 - 3, 0], [B2, 3], [B2, Dd]]) + ln(w, 'bhd', -B2 + 2.6, 2.4, -B2 + 2.6, Dd - 0.3) + ln(w, 'bhd', B2 - 2.6, 2.4, B2 - 2.6, Dd - 0.3) + ln(w, 'bhd', -B2 + 2, 2.2, B2 - 2, 2.2);
+    sec += box(w, 'box', -B2 + 3, 2.4, 2 * B2 - 6, 29.4) + box(w, 'box box2', -B2, Dd + 0.6, 2 * B2, 20.8);
+    for (let i = 1; i < 24; i++) sec += ln(w, 'grid', -B2 + i * 2.45, Dd + 0.6, -B2 + i * 2.45, Dd + 21.4);
+    for (let i = 1; i < 8; i++) sec += ln(w, 'grid', -B2, Dd + 0.6 + i * 2.6, B2, Dd + 0.6 + i * 2.6);
+    s += sec + mk(w, 'b', 0, 8.3) + mk(w, 'g', -4, 22) + mk(w, 'm', 4, 24);
+    s += box(w, 'seao', -74, Tt - h, 186, h) + poly(w, 'bed', [[56, Tt - h], [104, Tt + 3], [112, Tt + 3], [112, Tt - h]]) + ln(w, 'wl', -74, Tt, 104, Tt);
+    s += dimV(w, -B2, Tt - h, Tt, '~24 m deep', -40);
+    s += arrow(w.X(-70), w.Y(40), w.X(-36), w.Y(40), 'env', 3) + arrow(w.X(-70), w.Y(48), w.X(-36), w.Y(48), 'env', 3);
+    s += call(w, 40, 4, 668, 610, ['bank effect: flow squeezed between hull', 'and bank pulls the stern towards it'], 'start');
+    s += TL(668, 400, ['G high: heavy boxes low, light ones', 'on top, still well above B. GM a', 'couple of metres (typical; assumed).', `Roll period with GM 2 m ≈ ${fmt(c.roll2, 0)} s.`]);
+    s += TL(668, 486, ['Wind on ~14,000 m² of side (estimate):', `35 kn gives ≈ ${fmt(c.wind35 / 1e6, 1)} MN, ${fmt(c.wind35 / GRAV / 1000, 0)} t-force.`]);
+    s += TL(668, 540, ['Squat (open-water formula):', `${fmt(c.sq8, 1)} m at 8 kn, ${fmt(c.sq12, 1)} m at 12 kn.`]);
+    return svg(1000, 670, 'Side view of Ever Given: a 400 m hull with a bulbous bow, containers stacked on deck along most of its length, the bridge forward of midships and the funnel aft, wind arrows on the side. Below, a cross-section in a canal 24 m deep with a sloping bank, showing containers in the hold and eight tiers on deck, B low, G high and M just above G.', s);
+  };
+  D.prelude = st => {
+    const p = P.prelude, v = V(1.82, 50, 250);
+    let s = seaBack(v, -10, 500, p.T, -30) + p.draw(v, { lines: true }) + seaOver(v, -10, 500, p.T, -30);
+    s += dimH(v, 0, 488, -30, '488 m long', 16) + dimV(v, 488, 0, p.T, `~${fmt(calc.prelude.T, 0)} m`, 12, 'start');
+    s += call(v, 432, 93, 760, 52, ['internal turret, 93 m tall:', 'lines and risers enter here'], 'end');
+    s += call(v, 470, 74, 990, 100, ['living', 'quarters', 'upwind'], 'end');
+    s += call(v, 230, 64, 380, 100, 'gas processing and liquefaction modules', 'middle');
+    s += call(v, 18, 100, 60, 52, 'flare at the far, downwind end', 'start');
+    s += call(v, 462, -22, 990, 336, '16 lines to driven piles, ~250 m below', 'end');
+    s += T(20, 24, 'SIDE VIEW', 'hdr');
+    // weathervaning plan, not to scale
+    const cx = 330, cy = 590, wind = { w: 0, sw: 45, s: 90 }[st] ?? 0;
+    s += T(20, 370, 'PLAN · NOT TO SCALE', 'hdr');
+    let pl = '';
+    [45, 135, 225, 315].forEach(b => [-9, -3, 3, 9].forEach(d => { const a = (b + d) * D2R; pl += `<line class="moor" x1="${cx}" y1="${cy}" x2="${f(cx + 140 * Math.cos(a))}" y2="${f(cy + 120 * Math.sin(a))}"/>`; }));
+    [45, 135, 225, 315].forEach(b => { const a = b * D2R; pl += `<circle class="anc" cx="${f(cx + 140 * Math.cos(a))}" cy="${f(cy + 120 * Math.sin(a))}" r="5"/>`; });
+    const hull = `<path class="hull" d="M${cx + 10},${cy - 13} L${cx + 10},${cy + 13} L${cx - 156},${cy + 13} L${cx - 160},${cy + 8} L${cx - 160},${cy - 8} L${cx - 156},${cy - 13} Z"/><circle class="turret" cx="${cx}" cy="${cy}" r="7"/>`;
+    // wind blows from the chosen side; the hull trails downwind of the turret, bow (turret end) into the wind
+    s += pl + `<g transform="rotate(${180 - wind} ${cx} ${cy})">${hull}</g>`;
+    const wa = (180 - wind) * D2R, ux = Math.cos(wa), uy = Math.sin(wa);
+    s += arrow(cx + ux * 200, cy + uy * 175, cx + ux * 145, cy + uy * 125, 'env', 3) + T(cx + ux * 222, cy + uy * 192 + 4, 'wind', 'ent', 'middle');
+    s += TL(560, 500, ['The hull swings around the turret like a', 'weathervane, so it always meets wind and', 'waves bow-on: the heading where the long hull', 'feels the smallest load and rolls the least.', '', 'The chain table inside the turret stays still;', 'bearings let the hull turn around it, and a', 'swivel passes the gas through to the plant.']);
+    return svg(1000, 790, 'Side view of Prelude FLNG: a 488 m hull with process modules along the deck, a 93 m tall internal turret near the bow with mooring lines running down, living quarters at the bow and the flare tower at the stern. Below, a plan view not to scale: the turret with sixteen mooring lines in four groups of four, and the hull swung downwind of the turret to face the wind.', s);
+  };
+  D.vanguard = st => {
+    const p = P.vanguard, wlz = st === 'sub' ? 31 : st === 'load' ? 13 : 11, v = V(2.9, 130, 300);
+    const cargo = st !== 'empty', cz = st === 'sub' ? 16 : 15.8;
+    let s = seaBack(v, -10, 285, wlz, -4) + p.draw(v, { cargo, cargoZ: cz }) + seaOver(v, -10, 285, wlz, -4);
+    s += dimH(v, 0, 275, 0, '275 m long, flat deck end to end', 34) + dimV(v, 0, 0, 15, 'deck 15 m', -12);
+    if (st === 'sub') s += dimV(v, 275, 15, 31, '16 m', 14, 'start');
+    else s += dimV(v, 275, 0, wlz, `${wlz} m`, 14, 'start');
+    s += call(v, 259, 47, 990, 60, ['bridge and accommodation on one', 'side, leaving the deck clear'], 'end');
+    s += call(v, 9, 30, 40, 60, ['buoyancy casing: keeps a waterplane', 'when the deck is under water'], 'start');
+    if (cargo) s += call(v, 135, 72, 530, 80, st === 'sub' ? 'the cargo floats in over the sunken deck' : 'cargo sits dry on deck, seafastened', 'middle');
+    s += T(20, 24, 'SIDE VIEW', 'hdr');
+    // section
+    const w = V(3.6, 230, 610);
+    let sec = box(w, 'hull', -35, 0, 70, 15) + box(w, 'sup', 23, 15, 11, 26) + box(w, 'sup', 25, 41, 8, 6);
+    sec += box(w, 'sup cas', -34, 15, 9, 15) + ln(w, 'bhd', -12, 0.4, -12, 14.6) + ln(w, 'bhd', 12, 0.4, 12, 14.6);
+    s += T(20, 400, 'CROSS-SECTION (looking aft)', 'hdr') + seaBack(w, -50, 50, wlz, -3) + sec;
+    if (cargo) s += box(w, 'cargo', -30, cz, 50, 10);
+    const zB = st === 'sub' ? 9 : wlz / 2;
+    s += mk(w, 'b', 0, zB) + mk(w, 'g', 0, cargo ? 14 : 10.5) + seaOver(w, -50, 50, wlz, -3) + dimH(w, -35, 35, 0, '70 m', 26);
+    s += mk(w, 'm', 0, st === 'sub' ? 19 : wlz / 2 + 70 * 70 / (12 * wlz));
+    const t = st === 'sub'
+      ? ['Deck under: the waterplane shrinks to the casings', 'and the deckhouse. BM collapses, M drops towards', 'G, and each metre of draught needs far less', 'ballast. This is the critical stage: the casings', 'are placed wide apart to keep some stability.']
+      : ['Deck above water: the whole 275 × 70 m deck is', `waterplane. Each metre deeper takes ≈ ${fmt(Math.round(calc.vanguard.perMetre / 100) * 100, 0)} t of`, 'ballast, and M sits far above G.', '', st === 'load' ? 'Loaded: the cargo’s weight sets the draught.' : 'Empty, at the sailing draught of about 11 m.'];
+    s += TL(470, 460, t);
+    return svg(1000, 650, 'Side view and cross-section of BOKA Vanguard: a flat, bowless 275 m by 70 m deck, the bridge and accommodation on one side at the forward end, and buoyancy casings aft. The chosen state shows the waterline at the sailing draught, or 31 m with the deck 16 m under water while a floating cargo comes in, or the loaded vessel with cargo on deck.', s);
+  };
+  D.sleipnir = st => {
+    const p = P.sleipnir, op = st === 'op', wlz = op ? 27 : 12, v = V(2.25, 130, 520);
+    let s = seaBack(v, -50, 226, wlz, -4) + p.draw(v, op ? { boom: 112, load: 70 } : { boom: 8 }) + seaOver(v, -50, 226, wlz, -4);
+    s += dimH(v, 0, 220, 0, '220 m', 30) + dimV(v, 220, 0, wlz, `${wlz} m`, 12, 'start') + dimV(v, 220, wlz, 49.5, '', 12, 'start');
+    s += call(v, 34, 64, op ? 240 : 230, op ? 210 : 230, ['two 10,000 t cranes', 'at the stern'], 'start');
+    s += call(v, 192, 71.5, 560, 300, 'accommodation forward', 'start');
+    s += call(v, 64, 20, 300, 580, op ? 'columns cut the surface: small waterplane' : 'floating on the pontoons: like a twin-hull ship', 'start');
+    if (op) s += call(v, -34, 75, 20, 300, ['load hung', 'over the', 'stern'], 'start');
+    s += T(20, 24, 'SIDE VIEW', 'hdr');
+    // section
+    const w = V(2.25, 845, 520);
+    let sec = box(w, 'hull', -51, 0, 26, 13) + box(w, 'hull', 25, 0, 26, 13) + box(w, 'hull', -49, 13, 22, 24) + box(w, 'hull', 27, 13, 22, 24) + box(w, 'hull', -48.75, 37, 97.5, 12.5);
+    sec += box(w, 'crane', 26, 49.5, 22, 15) + box(w, 'crane', -48, 49.5, 22, 15);
+    s += T(700, 24, 'CROSS-SECTION', 'hdr') + seaBack(w, -60, 62, wlz, -4) + sec + mk(w, 'b', 0, op ? 9 : 5.5) + mk(w, 'g', 0, 30) + mk(w, 'm', 0, op ? 46 : 131);
+    s += seaOver(w, -60, 62, wlz, -4) + dimH(w, -51, 51, 0, '102 m', 30);
+    s += TL(op ? 676 : 40, op ? 110 : 70, op
+      ? ['Operating: ballasted to ~27 m. Only', 'the eight columns pierce the surface,', 'so the heave spring is soft: natural', 'periods far above the waves, small', 'motions for precise lifts. The columns', 'are spread wide, so the waterplane', 'keeps a large second moment and GM', 'stays healthy.']
+      : ['Transit: deballasted to ~12 m, floating on', 'the pontoons. Big waterplane and a very high M;', 'low drag: she sails between jobs like a', 'broad twin-hull ship.']);
+    return svg(1000, 600, 'Side view and cross-section of the semi-submersible crane vessel Sleipnir: two pontoons, four columns a side, a deckbox and two cranes at the stern. In transit the waterline is at the top of the pontoons; at operating draught it is halfway up the columns and a crane holds a load over the stern.', s);
+  };
+  D.ps = st => {
+    const step = { arrive: 0, beams: 1, lift: 2 }[st] ?? 0;
+    // plan view: x forward, z across (port positive)
+    const v = V(1.62, 190, 160);
+    let s = T(20, 24, 'PLAN', 'hdr');
+    s += `<path class="hull" d="M${v.X(0)},${v.Y(62)} L${v.X(370)},${v.Y(62)} Q${v.X(382)},${v.Y(62)} ${v.X(382)},${v.Y(46)} L${v.X(382)},${v.Y(33)} Q${v.X(382)},${v.Y(29.5)} ${v.X(378)},${v.Y(29.5)} L${v.X(260)},${v.Y(29.5)} L${v.X(260)},${v.Y(-29.5)} L${v.X(378)},${v.Y(-29.5)} Q${v.X(382)},${v.Y(-29.5)} ${v.X(382)},${v.Y(-33)} L${v.X(382)},${v.Y(-46)} Q${v.X(382)},${v.Y(-62)} ${v.X(370)},${v.Y(-62)} L${v.X(0)},${v.Y(-62)} Z"/>`;
+    for (let i = 0; i < 8; i++) { const x = 268 + i * 14.5, e = step ? 8 : 0; s += box(v, 'crane', x, 29.5 - e, 6, e + 4) + box(v, 'crane', x, -33.5, 6, e + 4); }
+    if (step) s += box(v, 'cargo', 285, -25, 80, 50);
+    s += poly(v, 'crane', [[0, 40], [-95, 46], [-95, 34], [0, 28]]) + poly(v, 'crane', [[0, -28], [-95, -34], [-95, -46], [0, -40]]);
+    s += dimH(v, 0, 382, -62, '382 m hull', 26) + dimV(v, 382, -62, 62, '124 m', 14, 'start') + dimH(v, 260, 382, 62, 'slot 122 × 59 m', -8);
+    s += call(v, 300, 33, 540, 56, '8 lifting beams a side, motion-compensated', 'end');
+    s += call(v, -60, -40, 24, 262, ['jacket-lift beams', 'tilt over the stern'], 'start');
+    // section through the slot, looking forward; world z = 0 at the waterline
+    const Tt = [25, 25, 18][step], lift = step === 2 ? 3 : 0, w = V(3.3, 300, 490);
+    s += T(20, 300, 'CROSS-SECTION THROUGH THE SLOT', 'hdr');
+    s += seaBack(w, -80, 80, 0, -48);
+    let sec = '';
+    [-1, 1].forEach(sg => {
+      sec += box(w, 'hull', sg > 0 ? 29.5 : -62, -Tt, 32.5, 30) + box(w, 'sup', sg > 0 ? 31 : -38, 30 - Tt, 7, 13);
+      const ext = step ? 8.5 : 0, bz = 43 - Tt;
+      sec += box(w, 'crane', sg > 0 ? 29.5 - ext : -38, bz, 8.5 + ext, 2.2);
+    });
+    sec += ln(w, 'leg', -18, -48, -18, 22) + ln(w, 'leg', 18, -48, 18, 22) + ln(w, 'brace', -18, -40, 18, -10) + ln(w, 'brace', 18, -40, -18, -10) + ln(w, 'brace', -18, 0, 18, 22) + ln(w, 'brace', 18, 0, -18, 22);
+    sec += box(w, 'cargo', -25, 22 + lift, 50, 24);
+    s += sec + seaOver(w, -80, 80, 0, -48);
+    s += call(w, 0, 34 + lift, 560, 330, ['topsides on the jacket', '(Brent Charlie: 31,000 t)'], 'start');
+    s += call(w, -18, -44, 140, 680, 'jacket legs to the seabed', 'start');
+    s += TL(560, 410, [
+      ['1. Ballast down to ~25 m draught and', '    straddle the platform with the slot.'],
+      ['2. Beams slide out under the topsides', '    while the hull is low.'],
+      ['3. Pump ballast out. The hull rises and the', '    beams lift the topsides clear in seconds.'],
+    ][step].concat(['', `Load taken: ${fmt(calc.ps.sink, 2)} m of sinkage for 31,000 t,`, 'unless as much ballast goes overboard.']));
+    return svg(1000, 692, 'Plan view of Pioneering Spirit: a 382 m by 124 m twin-bow hull with a 122 m by 59 m slot at the bow lined by eight lifting beams a side, and jacket-lift beams over the stern. Below, a cross-section through the slot with the two bow hulls either side of a platform jacket, its topsides on top. The state buttons step through ballasting down, extending the beams, and deballasting to lift the topsides.', s);
+  };
+  D.hywind = () => {
+    const v = V(1.45, 230, 450), W = 78;
+    let s = seaBack(v, -120, 120, W, -27) + seabed(v, -120, 120, -27, 4);
+    s += pline(v, 'moor', [[-7, 40], [-40, 10], [-80, -18], [-120, -27]]) + pline(v, 'moor', [[7, 40], [40, 10], [80, -18], [120, -27]]);
+    s += P.hywind.draw(v, { front: true, ballast: true }) + seaOver(v, -120, 120, W, -27);
+    s += mk(v, 'b', 0, 38) + mk(v, 'g', 0, 26) + mk(v, 'm', -16, 38);
+    s += dimV(v, 7.25, 0, W, '78 m draught', 30, 'start') + dimV(v, 7.25, W, W + 101, 'hub ~101 m above water', 30, 'start') + dimH(v, -7.25, 7.25, 0, '14.5 m', 18);
+    s += call(v, 6, 10, 300, 478, 'solid ballast low in the hull', 'start');
+    s += call(v, -100, -22, 40, 508, '3 chain lines to suction anchors', 'start');
+    s += call(v, 0, W + 101 + 77, 300, 14, 'rotor 154 m across, 6 MW', 'start');
+    s += TL(560, 140, ['G below B: the spar is a pendulum. Tilt it and', 'the low G swings back under B. That is its', 'stability, not its waterplane:', '', `• Waterplane: BM = I ÷ volume ≤ ${fmt(calc.hywind.BM, 1)} m, even`, '   using the full 14.5 m diameter.', `• The barge in 14.2 has BM ${fmt(calc.barge.BM, 1)} m, ${fmt(Math.round(calc.ratioBM / 10) * 10, 0)} times more.`, '', 'The thin column through the surface gives a', 'small heave spring: long natural periods and', 'gentle motion. The price is depth: the hull', 'needs ~100 m of water, and the turbine is', 'fitted in a deep fjord before the tow out.']);
+    s += T(560, 24, 'FRONT VIEW · moorings shortened', 'hdr');
+    return svg(1000, 520, 'Front view of a Hywind Scotland unit: a slender spar hull 78 m deep, ballasted at the bottom, supporting a tower and a three-bladed rotor with its hub about 101 m above water, held by three chain lines. G is drawn below B, and M just above B.', s);
+  };
+  D.striker = st => {
+    const p = P.striker, v = V(6.2, 90, 330);
+    let s = seaBack(v, -12, 94, p.T, -3) + p.draw(v) + seaOver(v, -12, 94, p.T, -3);
+    s += pline(v, 'tow', [[1.2, 10.4], [-10, 6]]);
+    s += dimH(v, 0, 88.9, 0, '88.9 m', 24) + dimV(v, 88.9, 0, p.T, '8.5 m', 14, 'start');
+    s += call(v, 1.2, 10.4, 30, 160, ['stern roller:', 'the line leaves', 'low and central'], 'start');
+    s += call(v, 48, 14.6, 260, 150, 'towing and anchor-handling winch', 'start');
+    s += call(v, 68, 26.5, 520, 52, 'wheelhouse with aft-facing windows', 'start');
+    s += call(v, 8, 2.5, 140, 370, 'propellers kept deep for grip in waves', 'start');
+    s += T(20, 24, 'SIDE VIEW', 'hdr');
+    // girting section
+    const w = V(6.2, 860, 330), g = st === 'girt', ang = g ? 24 : 0;
+    let sec = poly(w, 'hull', [[-10.5, 13.8], [-10.5, 3], [-8.5, 0.6], [-5, 0], [5, 0], [8.5, 0.6], [10.5, 3], [10.5, 13.8]]) + box(w, 'sup', -6, 13.8, 12, 9);
+    sec += mk(w, 'g', 0, 7) + mk(w, 'm', 0, 10);
+    s += T(740, 24, 'CROSS-SECTION', 'hdr') + seaBack(w, -21, 22, 8.5, -3);
+    s += rot(ang, w.X(0), w.Y(8.5), sec) + mk(w, 'b', g ? 2.6 : 0, g ? 4.5 : 4.3);
+    s += seaOver(w, -21, 22, 8.5, -3);
+    if (g) {
+      const a = ang * D2R, px = w.X(0) + (10.5 * Math.cos(a) + (13.8 - 8.5) * Math.sin(a)) * w.s, py = w.Y(8.5) - (-10.5 * Math.sin(a) + (13.8 - 8.5) * Math.cos(a)) * w.s;
+      s += arrow(px, py, px + 100, py + 26, 'tow', 3) + TL(990, py + 56, ['towline', 'pulling abeam'], 'hlt', 'end');
+      s += TL(560, 410, ['Girting: a heavy tow swings out to the side', 'and the line pulls the tug over by a deck-level', 'point. The heeling lever is large and only GM', 'resists it. Tow hooks with quick release and', 'gog ropes that hold the line aft prevent it.']);
+    } else {
+      s += TL(560, 410, ['Towing astern: the line pulls aft along the', 'centreline, low down: no heeling moment.', `Trials: ${fmt(calc.striker.bp, 1)} t of bollard pull, roughly the`, 'weight of 300 cars, from a hull under 90 m long.']);
+    }
+    return svg(1000, 480, 'Side view of the ocean towing and anchor-handling tug ALP Striker: high bow with superstructure forward, a long low aft deck with the winch and a stern roller, propellers deep under the stern. A cross-section shows G, B and M, and in the girting state the tug heels as a towline pulls sideways at deck level.', s);
+  };
+
+  const STATES = {
+    barge: [['upright', 'Upright'], ['heel', 'Heeled to the deck edge']],
+    vanguard: [['empty', 'Sailing empty'], ['sub', 'Submerged, cargo floats in'], ['load', 'Loaded, ready to sail']],
+    sleipnir: [['transit', 'Transit draught'], ['op', 'Operating draught, lifting']],
+    ps: [['arrive', '1 · Ballast down'], ['beams', '2 · Beams in'], ['lift', '3 · Deballast and lift']],
+    prelude: [['w', 'Wind from the west'], ['sw', 'from the south-west'], ['s', 'from the south']],
+    striker: [['tow', 'Towing astern'], ['girt', 'Girting']],
+  };
+
+  function init() {
+    const lu = $('#ships-lineup'); if (lu) lu.innerHTML = lineup();
+    $$('figure.sv-fig[data-ship]').forEach(fig => {
+      const k = fig.dataset.ship, states = STATES[k], stage = el('div', { class: 'sv-scroll' });
+      const draw = st => { stage.innerHTML = D[k](st); };
+      if (states) {
+        const bar = el('div', { class: 'sv-tabs', role: 'group', 'aria-label': 'Choose a state' });
+        states.forEach(([id, lbl], i) => {
+          const b = el('button', { class: 'btn small', type: 'button', 'aria-pressed': String(!i), 'data-state': id }, lbl);
+          b.addEventListener('click', () => { $$('button', bar).forEach(x => x.setAttribute('aria-pressed', String(x === b))); draw(id); });
+          bar.append(b);
+        });
+        fig.prepend(bar);
+      }
+      fig.insertBefore(stage, $('figcaption', fig));
+      draw(states ? states[0][0] : undefined);
+    });
+  }
+  return { init, calc, icorels, D, lineup, STATES };
+})();
+INIT.push(Ships.init);
+
 /* ===================== Guided case study ===================== */
 const CASE = [
   {
@@ -10250,7 +11036,8 @@ function drawHero(ctx, w, h, t) {
 const MODULE_PATH = {
   anat: [[], ['m1', 'm11']], m1: [['m12', 'anat'], ['m2', 'm3']], m2: [['m12', 'm1'], ['m3', 'm5', 'm10']], m3: [['m2', 'm12'], ['m7', 'case']],
   m4: [['m12'], ['m5', 'm8']], m5: [['m4', 'm2'], ['m8', 'm9', 'm11']], m6: [['m1', 'm4'], ['m9', 'case']], m7: [['m3', 'm12'], ['m9', 'case']],
-  m8: [['m5', 'm4'], ['m9']], m9: [['m3', 'm5', 'm6', 'm8'], ['case']], m10: [['m2', 'm3', 'm4', 'm5'], []], m11: [['m1', 'm5', 'm6'], ['m8']], m12: [[], ['m1', 'm2', 'm3', 'm7']],
+  m8: [['m5', 'm4'], ['m9']], m9: [['m3', 'm5', 'm6', 'm8'], ['case']], m10: [['m2', 'm3', 'm4', 'm5'], ['ships']], m11: [['m1', 'm5', 'm6'], ['m8']], m12: [[], ['m1', 'm2', 'm3', 'm7']],
+  ships: [['m2', 'm3', 'm5', 'm6', 'm8', 'm11'], ['case']],
 };
 function modulePaths() {
   const name = id => { const a = $(`.toc a[href="#${id}"]`); return a ? `${MODULE_NAMES[id] || ''}${MODULE_NAMES[id] ? ' · ' : ''}${$$('span', a).pop().textContent}` : id; };
