@@ -484,6 +484,14 @@ html.fs-locked { overflow: hidden; }
 .ships .src { font-size: .82rem; color: var(--ink-3); }
 .ships td:first-child { font-weight: 700; }
 
+/* resonance dangers (topic 7.5) */
+ul.dangers { list-style: none; margin: 0; padding: 0; display: grid; gap: 4px; font-size: .86rem; }
+ul.dangers li { padding: 4px 8px 4px 26px; border-radius: 4px; position: relative; color: var(--ink-3); background: var(--surface); border: 1px solid var(--rule); }
+ul.dangers li::before { content: ""; position: absolute; left: 9px; top: 50%; width: 9px; height: 9px; margin-top: -4.5px; border-radius: 50%; background: var(--rule); }
+ul.dangers li.was { color: var(--ink); } ul.dangers li.was::before { background: var(--warn); }
+ul.dangers li.now { color: var(--ink); border-color: var(--bad); } ul.dangers li.now::before { background: var(--bad); box-shadow: 0 0 0 3px color-mix(in srgb, var(--bad) 30%, transparent); }
+ul.dangers li span { font-family: var(--f-mono); color: var(--ink-3); }
+
 /* load line mark (topic 3.5) */
 .ll-stage .llsv { min-width: 480px; }
 .llsv .plate { fill: var(--hull-fill); } .llsv .deck { fill: var(--hull); opacity: .6; }
@@ -1878,6 +1886,58 @@ footer.site { border-top: 1px solid var(--rule); margin-top: 40px; padding-block
     </div>
   </div>
 
+  <div class="topic" id="t7-5">
+    <h3><span class="tn">7.5</span>When the swell matches the ship: resonance in heave, pitch and roll</h3>
+    <div class="prose">
+      <p>Topic 7.2 showed resonance for one motion at a time. At sea all three restoring motions run together, each with its own natural period, and a long, regular <button class="t" type="button" data-t="swell">swell</button> is the sea most likely to find one of them. A wind sea mixes many periods, so few waves arrive in step. Swell has travelled far from the storm that made it, sorted by period, so wave after wave comes at nearly the same period, often in light wind, when nobody expects trouble. If that period meets a natural period of the ship, each wave adds a little energy before the last motion has died away.</p>
+      <p>What the ship meets is the <button class="t" type="button" data-t="encounter-period">encounter period</button>, not the wave period: heading into a swell shortens it, running with it lengthens it. So the master's two levers, course and speed, move the ship towards resonance or away from it.</p>
+    </div>
+    <figure class="exp" id="exp-res">
+      <div class="exp-stage">
+        <div class="exp-title"><h4>A 100 m ship in a regular swell</h4><span class="tag quant">Simplified · three oscillators, nonlinear roll</span></div>
+        <canvas style="aspect-ratio: 16/9" role="img" aria-label="3D view of a ship with deck cargo moving in a regular swell, with the swell direction arrowed. Labels appear on the ship when green water comes over the bow, the bow emerges and slams, the propeller races, or the deck edge goes under; the scene turns red if the ship capsizes."></canvas>
+        <canvas class="resc" style="aspect-ratio: 16/8" role="img" aria-label="Time traces over the last 60 seconds of heave with the swell at midships, pitch, and roll with dashed lines at deck-edge immersion, downflooding and capsize angles."></canvas>
+        <canvas class="resa" style="aspect-ratio: 16/5" role="img" aria-label="Amplification of heave, pitch and roll against swell period, with peaks at each natural period, the current swell period marked and, in head or following seas, the parametric roll zone shaded."></canvas>
+      </div>
+      <div class="exp-side">
+        <div class="controls"></div>
+        <div class="look"><b>Look for</b>Start with the first preset and watch the roll build over a minute until the cargo shifts and she capsizes. Reset, tick bilge keels, and play again. Then try the head-swell presets: at 3 knots the bow plunges and slams; at 8 knots the same sea sets her rolling with no sideways push at all.</div>
+        <div class="live" aria-live="polite"></div>
+      </div>
+      <figcaption class="exp-foot"><span><b>Model:</b> a 100 m × 20 m ship, 6 m draught, 4 m freeboard, deck cargo up to 14 m above the waterline. Heave (natural period 7.5 s, damping ratio 0.35) and pitch (7 s, 0.25) are linear oscillators driven by the swell averaged over 70% of the hull length. Roll has natural period 2π × 0.4 × B ÷ √(g·GM), damping ratio 0.035 (0.10 with bilge keels) plus a quadratic term, a restoring lever that falls to zero at 60° (the angle of vanishing stability), and, in head and following seas, a GM that rises and falls with the waves (parametric excitation, largest when the wavelength is near the ship length). Cargo shifts 6° of list each time sideways acceleration at 14 m exceeds 0.5 g. Motions are not coupled to each other, the sea is perfectly regular and the ship holds its course. Real assessments use diffraction results and time-domain simulation with irregular seas.</span></figcaption>
+    </figure>
+
+    <div class="tablewrap"><table>
+      <thead><tr><th>Motion</th><th>Typical natural period</th><th>When it resonates</th><th>What you see on board</th><th>The danger</th></tr></thead>
+      <tbody>
+        <tr><td>Heave</td><td>5 to 12 s for ships and barges; 20 s or more for semi-submersibles and spars</td><td>Head or beam swell near that period, at a length the hull cannot average out</td><td>The whole ship rises and falls further than the waves</td><td>Lost under-keel clearance, slack and snatch loads in crane wires and moorings, green water. Heave damping is high (the hull makes waves as it moves), so heave resonance is broad but rarely extreme.</td></tr>
+        <tr><td>Pitch</td><td>Similar to heave, often slightly shorter</td><td>Head or following swell with a wavelength near the ship length</td><td>The bow climbs, then plunges into the next crest; the stern lifts</td><td>Green water over the bow, slamming as the forefoot re-enters, propeller racing and engine overspeed, very high vertical accelerations at the ends, hull girder whipping (Module 10).</td></tr>
+        <tr><td>Roll</td><td>Set by GM and beam: about 0.8 × B ÷ √GM, often 8 to 20 s</td><td>Beam or quartering swell near the roll period</td><td>Each roll a little larger than the last, slow and heavy</td><td>Roll damping is very low, so amplification is the largest of all: deck edge immersion, cargo and lashing failure, shifted cargo and a permanent list, downflooding through vents, capsize.</td></tr>
+        <tr><td>Parametric roll</td><td>Roll period, but triggered at half of it</td><td>Head or following swell with encounter period about half the roll period and wavelength near the ship length</td><td>Violent roll appears from nowhere in a swell from ahead</td><td>Waterplane and GM grow on a trough amidships and shrink on a crest; when that pumping is in step with the roll it feeds it. Container ships with fine ends and wide sterns are prone to it.</td></tr>
+      </tbody>
+    </table></div>
+
+    <div class="explain">
+      <div class="why"><h4>Why it builds up</h4>
+        <p>Each swell adds the same small push. At resonance the pushes arrive in step with the motion, so the energy accumulates until damping takes out as much per cycle as the waves put in. Heave and pitch lose energy quickly by making waves; roll hardly does, which is why roll resonance amplifies a swell of a few degrees' slope into tens of degrees.</p>
+        <p>Large roll also changes the ship: the righting lever stops growing past the deck edge, so the roll period lengthens. That detuning can save her, or, with cargo that has shifted, take her past the point of no return.</p>
+      </div>
+      <div class="decision"><h4>Offshore decision</h4>
+        <p>Operations are limited by swell period as well as height: a crane vessel may work in 2 m of short wind sea but stop in 1 m of long swell. Tows are routed and timed away from beam swell near the barge's roll period. FPSOs off West Africa are designed for long swells arriving from a different direction to the local wind. At sea the master changes course or speed to move the encounter period, and ballast can shift GM and the roll period.</p>
+      </div>
+      <div class="myth"><h4>Misconception</h4>
+        <p><strong>"Small swell, calm day, no problem."</strong> A low, long swell near the roll period can roll a ship harder than a rough wind sea. In 1998 the container ship APL China rolled violently in a head sea from parametric roll and lost and damaged hundreds of containers; in 2020 ONE Apus lost more than 1,800 overboard in heavy rolling in the Pacific.</p>
+      </div>
+    </div>
+    <div class="cards">
+      <div class="card"><h4>Move the encounter period</h4><span class="unit">course and speed</span><p>Speed into a head swell shortens the encounter period; turning to run with it lengthens it. Small changes can move a ship off a resonance peak or out of the parametric zone. Heavy-weather guidance for container ships tells masters which combinations to avoid.</p></div>
+      <div class="card"><h4>Move the natural period</h4><span class="unit">GM, ballast, design</span><p>Roll period goes with 1/√GM. More GM shortens it (stiffer, quicker roll, higher accelerations); less lengthens it. Semi-submersibles and spars are designed with heave periods far above any swell (topic 9.5).</p></div>
+      <div class="card"><h4>Add damping</h4><span class="unit">bilge keels, tanks, fins</span><p>Damping cannot move the peak, but it cuts its height. Bilge keels, anti-roll tanks and fin stabilisers (topic 9.4) all attack roll, the least-damped motion.</p></div>
+      <div class="card"><h4>Secure the cargo</h4><span class="unit">break the chain</span><p>Most capsizes in heavy rolling are a chain: big roll, cargo or ballast shifts, a permanent list, then a roll to the low side that does not come back. Seafastening designed for the right accelerations (topic 7.4) breaks the chain at its second link.</p></div>
+    </div>
+    <p class="famlink">Related: <a href="#t7-2">7.2 Natural period and resonance</a> · <a href="#t6-4">6.4 Where waves come from (swell)</a> · <a href="#t9-4">9.4 Roll reduction</a> · <a href="#m2">Module 4 · Stability</a></p>
+  </div>
+
   <p class="watch"><span class="cc-label">Watch</span> <a href="https://www.youtube.com/watch?v=5yRKj-At5ps" target="_blank" rel="noopener">Ship Motions Explained: Roll, Pitch, Yaw, Surge, Sway, and Heave</a> <span class="ch">(Nautical Academy)</span> · <a href="https://www.youtube.com/watch?v=LzNuVqptgNw" target="_blank" rel="noopener">Why Boats Move the Way They Do (6 Degrees of Freedom)</a> <span class="ch">(Offshore Surveys)</span> · <a href="#watch">more videos</a></p>
   <div class="recap">
     <h3>What you should now understand</h3>
@@ -1888,6 +1948,7 @@ footer.site { border-top: 1px solid var(--rule); margin-top: 40px; padding-block
       <li>An RAO gives response per unit wave for each period and direction. Combined with a wave spectrum, it predicts motion in an irregular sea.</li>
       <li>Motion limits for operations are separate from structural strength.</li>
       <li>Motions become forces: tilt plus acceleration at the extreme of each roll push deck cargo sideways, and seafastening must hold it.</li>
+      <li>A regular swell at a natural period (heave, pitch or roll) builds motion wave by wave. Roll is the least damped and the most dangerous; parametric roll can start in a head sea. Course, speed, GM, damping and secure cargo are the defences.</li>
     </ul>
   </div>
   <div class="predictions" id="m5-predict"></div>
@@ -4081,6 +4142,7 @@ const GLOSSARY = {
   'roll': ['Roll', 'Rotation about the longitudinal (x) axis. Used for the wave-driven oscillation from side to side, which swings around the steady angle set by list and heel.', 'm5'],
   'pitch': ['Pitch', 'Rotation about the transverse (y) axis: bow up and down. Used for the wave-driven oscillation, which swings around the steady trim.', 'm5'],
   'yaw': ['Yaw', 'Rotation about the vertical (z) axis: a change of heading.', 'm5'],
+  'encounter-period': ['Encounter period', 'The time between wave crests as the moving ship meets them. Heading into the waves shortens it, running with them lengthens it; at zero speed it equals the wave period. Motions respond to the encounter period, so course and speed move a ship towards or away from resonance.', 'm5'],
   'natural-period': ['Natural period', 'The period at which a system oscillates freely after being disturbed, set by its mass (including added mass) and stiffness.', 'm5'],
   'resonance': ['Resonance', 'Large response when the forcing period matches a natural period. Limited only by damping.', 'm5'],
   'added-mass': ['Added mass', 'The extra inertia from water that must be accelerated along with a moving hull. Varies with frequency.', 'm5'],
@@ -4519,7 +4581,7 @@ const GLOSS_ALIAS = {
   'wave-period': ['wave periods?'], 'wavelength': ['wavelengths?'], 'wind-sea': ['wind seas?'], 'swell': ['swell'], 'spectrum': ['spectrum', 'spectra'],
   'hs': ['significant wave height', 'Hs'], 'tp': ['peak period'], 'sea-state': ['sea states?'], 'return-period': ['return periods?'], 'metocean': ['metocean'],
   'weathervane': ['weathervaning', 'weathervanes?'], 'weather-window': ['weather windows?'], 'surge': ['surge'], 'sway': ['sway'], 'heave': ['heave'], 'roll': ['roll'],
-  'pitch': ['pitch'], 'yaw': ['yaw'], 'natural-period': ['natural periods?'], 'resonance': ['resonance', 'resonant'], 'added-mass': ['added mass'], 'damping': ['damping'],
+  'pitch': ['pitch'], 'yaw': ['yaw'], 'natural-period': ['natural periods?'], 'encounter-period': ['encounter periods?', 'encounter frequency'], 'resonance': ['resonance', 'resonant'], 'added-mass': ['added mass'], 'damping': ['damping'],
   'rao': ['RAOs?', 'response amplitude operators?'], 'hydrodynamics': ['hydrodynamics', 'hydrodynamic'], 'global-performance': ['global performance'],
   'froude': ['Froude number'], 'stw': ['speed through (the )?water'], 'sog': ['speed over (the )?ground'], 'catenary': ['catenar(y|ies)'], 'snatch': ['snatch loads?'],
   'bollard-pull': ['bollard pull'], 'crab': ['crab angle', 'crab'], 'towline': ['towlines?'], 'seafastening': ['seafastening'], 'hogging': ['hogging', 'hogs?'],
@@ -4560,6 +4622,7 @@ const FAMILIES = [
 ];
 FAMILIES.push(
   ['t1-1', '1.1', 'force and motion basics', ['mass-weight', 'force', 'acceleration', 'inertia', 'equilibrium', 'density']],
+  ['t7-5', '7.5', 'resonance in a swell', ['swell', 'encounter-period', 'resonance', 'parametric-roll', 'green-water', 'slamming', 'damping']],
   ['t7-2', '7.2', 'oscillation basics', ['frequency', 'amplitude', 'natural-period', 'resonance', 'damping', 'radius-of-gyration']],
   ['t10-2', '10.2', 'material behaviour', ['stress', 'strain', 'youngs-modulus', 'yield', 'buckling', 'fatigue']],
   ['t1-1', '1.1', 'moments and balance', ['moment', 'lever-arm', 'cog', 'righting-moment', 'heeling-moment', 'bending-moment']],
@@ -7730,6 +7793,226 @@ INIT.push(() => {
   slider(b.controls, { id: 'sf-z', label: 'Cargo G height above the roll axis', min: 2, max: 30, step: 1, value: 12, unit: 'm', onInput: set('z') });
   slider(b.controls, { id: 'sf-m', label: 'Cargo weight', min: 100, max: 3000, step: 100, value: 1000, unit: 't', onInput: set('m') });
   describe();
+});
+
+/* ---- 7.5 Resonance in a swell: heave, pitch and roll of a ship at once ---- */
+// 100 m × 20 m ship (the 3D hull above), 6 m draught, 4 m freeboard. Each motion is its own oscillator driven by a
+// regular swell at the encounter frequency; roll is nonlinear (restoring falls to zero at the angle of vanishing
+// stability, damping grows with speed) and its stiffness can be modulated by waves along the hull (parametric roll).
+const RES = { L: 100, B: 20, T: 6, F: 4, Th: 7.5, Tp: 7, zh: 0.35, zp: 0.25, avs: 60, edge: Math.atan(4 / 10) * R2D, flood: 40, hCrane: 14, xBow: 48, xProp: -46, zProp: -4 };
+const sincR = x => Math.abs(x) < 1e-6 ? 1 : Math.sin(x) / x;
+const gMom = x => Math.abs(x) < 1e-3 ? 1 : 3 * (Math.sin(x) - x * Math.cos(x)) / (x * x * x);   // averaging of slope over a length
+class ResSim {
+  constructor(p = {}) {
+    this.p = Object.assign({ T: 12, H: 3, beta: 90, V: 0, GM: 1.8, keels: false, loose: false }, p);
+    this.reset();
+  }
+  reset() { this.t = 0; this.s = [0, 0, 0, 0, 0.5 * D2R, 0]; this.cap = false; this.list = 0; this.hist = []; this.ev = {}; this.flags = {}; this.peak = { heave: 0, pitch: 0, roll: 0, alat: 0, avert: 0 }; }
+  Tr() { return TAU * 0.4 * RES.B / Math.sqrt(GRAV * this.p.GM); }
+  zr() { return this.p.keels ? 0.1 : 0.035; }
+  wave() {
+    const p = this.p, k = TAU / waveLen(p.T), w = TAU / p.T, b = p.beta * D2R, V = p.V * KN;
+    const we = Math.max(0.05, Math.abs(w + k * V * Math.cos(b)));
+    return { k, w, we, Te: TAU / we, a: p.H / 2, cb: Math.cos(b), sb: Math.sin(b), lam: waveLen(p.T) };
+  }
+  forcing(W = this.wave()) {
+    const L = 0.7 * RES.L, B = RES.B;
+    const Fh = W.a * Math.abs(sincR(W.k * (Math.abs(L * W.cb) + Math.abs(B * W.sb)) / 2));
+    const Fp = W.k * W.a * W.cb * gMom(W.k * L * Math.abs(W.cb) / 2);
+    const Fr = W.k * W.a * W.sb * sincR(W.k * B / 2);
+    // parametric excitation: GM swings as crests and troughs run along the hull, worst when the wave is about ship-length
+    const q = Math.min(0.7, 0.12 * this.p.H * W.cb * W.cb * Math.exp(-Math.pow((W.lam / RES.L - 1) / 0.6, 2)));
+    return { Fh, Fp, Fr, q };
+  }
+  eta(x, y, W = this.wave(), t = this.t) { return W.a * Math.cos(W.k * (x * W.cb + y * W.sb) + W.we * t); }
+  restoring(ph) { const v = RES.avs * D2R; return Math.sin(ph) * (1 - (ph / v) * (ph / v)); }
+  deriv(s, t, W, F) {
+    const wh = TAU / RES.Th, wp = TAU / RES.Tp, wr = TAU / this.Tr(), c = Math.cos(W.we * t), sn = Math.sin(W.we * t);
+    const [z, zd, th, thd, ph, phd] = s;
+    return [zd, wh * wh * (F.Fh * c - z) - 2 * RES.zh * wh * zd,
+      thd, wp * wp * (-F.Fp * sn - th) - 2 * RES.zp * wp * thd,
+      phd, -wr * wr * F.Fr * sn - wr * wr * ((1 + F.q * c) * this.restoring(ph) - this.restoring(this.list * D2R)) - 2 * this.zr() * wr * phd - 0.15 * Math.abs(phd) * phd];
+  }
+  update(dt) {
+    if (this.cap) return;
+    const W = this.wave(), F = this.forcing(W), n = Math.max(1, Math.ceil(dt / 0.01)), h = dt / n;
+    for (let i = 0; i < n; i++) {
+      const s = this.s, t = this.t, k1 = this.deriv(s, t, W, F), a = s.map((v, j) => v + k1[j] * h / 2), k2 = this.deriv(a, t + h / 2, W, F),
+        b = s.map((v, j) => v + k2[j] * h / 2), k3 = this.deriv(b, t + h / 2, W, F), c = s.map((v, j) => v + k3[j] * h), k4 = this.deriv(c, t + h, W, F);
+      this.s = s.map((v, j) => v + h / 6 * (k1[j] + 2 * k2[j] + 2 * k3[j] + k4[j]));
+      this.t += h;
+      if (Math.abs(this.s[4]) > RES.avs * D2R) { this.cap = true; this.s[4] = Math.sign(this.s[4]) * RES.avs * D2R; break; }
+    }
+    this.assess(W, F);
+  }
+  // what the motions mean on board, right now
+  assess(W = this.wave(), F = this.forcing(W)) {
+    const [z, , th, , ph] = this.s, d = this.deriv(this.s, this.t, W, F), t = this.t;
+    const deckBow = RES.F + z + RES.xBow * Math.sin(th), keelBow = -RES.T + z + (RES.xBow - 3) * Math.sin(th), prop = RES.zProp + z + RES.xProp * Math.sin(th);
+    const edgeS = RES.F + z - (RES.B / 2) * Math.sin(ph), edgeP = RES.F + z + (RES.B / 2) * Math.sin(ph);
+    const alat = Math.abs(GRAV * Math.sin(ph) - d[5] * RES.hCrane) / GRAV, avert = Math.abs(d[1] + RES.xBow * d[3]) / GRAV;
+    const f = {
+      green: this.eta(RES.xBow, 0, W, t) > deckBow,
+      slam: keelBow > this.eta(RES.xBow - 3, 0, W, t),
+      prop: prop > this.eta(RES.xProp, 0, W, t),
+      edge: this.eta(0, -RES.B / 2, W, t) > edgeS || this.eta(0, RES.B / 2, W, t) > edgeP,
+      cargo: alat > 0.5, lift: avert > 0.5, flood: Math.abs(ph) * R2D > RES.flood, cap: this.cap,
+    };
+    // badly secured cargo slides to the low side when the sideways acceleration beats friction and lashings: G moves, she lists
+    if (this.p.loose && f.cargo && !this.flags.cargo && Math.abs(this.list) < 30) this.list += 6 * Math.sign(ph);
+    Object.keys(f).forEach(k => { if (f[k] && !this.flags[k]) this.ev[k] = (this.ev[k] || 0) + 1; if (f[k]) this.ev[k + 'T'] = t; });
+    this.flags = f; this.now = { alat, avert };
+    this.hist.push([t, z, th * R2D, ph * R2D, this.eta(0, 0, W, t), alat, avert]);
+    while (this.hist.length && this.hist[0][0] < t - 60) this.hist.shift();
+    const rec = this.hist.filter(q => q[0] > t - Math.max(2 * W.Te, 2 * this.Tr()));
+    this.peak = { heave: Math.max(...rec.map(q => Math.abs(q[1]))), pitch: Math.max(...rec.map(q => Math.abs(q[2]))), roll: Math.max(...rec.map(q => Math.abs(q[3]))), alat: Math.max(...rec.map(q => q[5])), avert: Math.max(...rec.map(q => q[6])) };
+  }
+  // linear dynamic amplification of each motion against wave period, for the chart
+  amp(Tn, z, Te) { const r = Tn / Te; return 1 / Math.sqrt(Math.pow(1 - r * r, 2) + Math.pow(2 * z * r, 2)); }
+  run(sec) { for (let i = 0; i < sec / 0.05; i++) this.update(0.05); return this; }
+}
+// drawing: 3D view, time traces and the amplification chart
+Object.assign(ResSim.prototype, {
+  cam() { return this._cam || (this._cam = { az: -36 * D2R, el: 20 * D2R }); },
+  proj(p, w, h) {
+    const c = this.cam(), sc = Math.min(w / 175, h / 92), a = V3.rotZ(p, c.az);
+    return [w / 2 + a[0] * sc, h * 0.6 - (a[2] * Math.cos(c.el) + a[1] * Math.sin(c.el)) * sc, a[1] * Math.cos(c.el) - a[2] * Math.sin(c.el)];
+  },
+  drawScene(ctx, w, h) {
+    const W = this.wave(), [z, , th, , ph] = this.s, f = this.flags || {}, P = q => this.proj(q, w, h);
+    const tf = q => { let r = V3.rotX(q, ph); r = V3.rotY(r, -th); return [r[0], r[1], r[2] + z]; };
+    // sea surface tiles, split into those behind and in front of the ship
+    const tiles = [], nx = 20, ny = 10, x0 = -85, y0 = -50, dx = 8.5, dy = 10;
+    for (let i = 0; i < nx; i++) for (let j = 0; j < ny; j++) {
+      const xs = [x0 + i * dx, x0 + (i + 1) * dx], ys = [y0 + j * dy, y0 + (j + 1) * dy], cx = (xs[0] + xs[1]) / 2, cy = (ys[0] + ys[1]) / 2;
+      if (Math.abs(cx) < 46 && Math.abs(cy) < 8) continue;
+      const pts = [[xs[0], ys[0]], [xs[1], ys[0]], [xs[1], ys[1]], [xs[0], ys[1]]].map(([x, y]) => P([x, y, this.eta(x, y, W)]));
+      tiles.push({ pts, d: pts.reduce((s, q) => s + q[2], 0) / 4, e: this.eta(cx, cy, W) });
+    }
+    tiles.sort((a, b) => b.d - a.d);
+    const tile = (t, al) => Draw.poly(ctx, t.pts, withAlpha(t.e > 0 ? C.water2 : C.water, al * (0.55 + 0.45 * Math.min(1, Math.abs(t.e) / Math.max(W.a, 0.1)))), withAlpha(C.waterLine, 0.35), 0.7);
+    tiles.filter(t => t.d > 0).forEach(t => tile(t, 0.9));
+    // hull, deckhouse and deck cargo (the cargo slides towards the low side if it has shifted)
+    const cs = this.list ? Math.sign(this.list) * Math.min(6, Math.abs(this.list) / 5) : 0;
+    const cargo = [];
+    [[-28, -6], [-12, 8], [6, 22]].forEach(([a, b]) => {
+      const bx = [[a, -7 - cs], [b, -7 - cs], [b, 7 - cs], [a, 7 - cs]], z0 = 4, z1 = 11;
+      for (let i = 0; i < 4; i++) { const p = bx[i], q = bx[(i + 1) % 4]; cargo.push({ pts: [[p[0], p[1], z0], [q[0], q[1], z0], [q[0], q[1], z1], [p[0], p[1], z1]], kind: 'cargo' }); }
+      cargo.push({ pts: bx.map(q => [q[0], q[1], z1]), kind: 'cargo' });
+    });
+    const faces = HULL3D.concat(cargo).map(fc => { const pts = fc.pts.map(q => P(tf(q))); return { pts, kind: fc.kind, d: pts.reduce((s, q) => s + q[2], 0) / pts.length }; });
+    faces.sort((a, b) => b.d - a.d);
+    faces.forEach(fc => {
+      const fill = fc.kind === 'deck' ? C.surface2 : fc.kind === 'house' || fc.kind === 'houseTop' ? C.surface : fc.kind === 'cargo' ? C.cargo : C.hullFill;
+      Draw.poly(ctx, fc.pts, fill, fc.kind === 'side' && f.edge ? C.bad : C.hull, fc.kind === 'side' && f.edge ? 2 : 1);
+    });
+    tiles.filter(t => t.d <= 0).forEach(t => tile(t, 0.55));
+    // what is going wrong, drawn where it happens
+    const bow = P(tf([RES.xBow, 0, RES.F])), keel = P(tf([RES.xBow - 3, 0, -RES.T])), prop = P(tf([RES.xProp, 0, RES.zProp]));
+    const tag = (q, s, col, dx = 10, dy = -10) => { Draw.text(ctx, s, q[0] + dx, q[1] + dy, { size: 12, color: col, weight: 700 }); };
+    if (f.green) { for (let i = 0; i < 7; i++) { const a = -0.3 - i * 0.35; Draw.line(ctx, [[bow[0], bow[1]], [bow[0] + 22 * Math.cos(a), bow[1] + 22 * Math.sin(a) - 6]], C.waterLine, 2.5); } tag(bow, 'green water on deck', C.waterLine, 14, -22); }
+    if (f.slam) tag(keel, 'bow out: slam on re-entry', C.bad, 12, 18);
+    if (f.prop) tag(prop, 'propeller racing', C.warn, -10, 20);
+    if (f.edge) tag(P(tf([0, Math.sign(ph) * -10, RES.F])), 'deck edge under', C.bad, 8, 26);
+    // wave direction arrow, out on the sea surface
+    const wd = [-W.cb, -W.sb], st = [70 * W.cb, 42 * W.sb];
+    const A = P([st[0], st[1], 0]), B = P([st[0] + wd[0] * 22, st[1] + wd[1] * 22, 0]);
+    Draw.arrow(ctx, A[0], A[1], B[0], B[1], C.env, { w: 3, head: 10 }); Draw.text(ctx, 'swell', A[0] + 6, A[1] - 10, { size: 11, color: C.env });
+    // live numbers
+    [`heave ${fmtSigned(z, 1)} m`, `pitch ${fmtSigned(th * R2D, 1)}°`, `roll ${fmtSigned(ph * R2D, 1)}°`, `t = ${fmt(this.t, 0)} s`].forEach((s, i) => Draw.text(ctx, s, 10, 14 + i * 16, { size: 12, color: [C.buoy, C.struct, C.accent, C.ink3][i] }));
+    if (this.list) Draw.text(ctx, `cargo shifted: permanent list ${fmt(Math.abs(this.list), 0)}°`, 10, 82, { size: 12, color: C.bad, weight: 700 });
+    if (this.cap) {
+      ctx.fillStyle = withAlpha(C.bad, 0.18); ctx.fillRect(0, 0, w, h);
+      Draw.text(ctx, 'CAPSIZED', w / 2, h * 0.3, { size: 30, align: 'center', color: C.bad, weight: 800 });
+      Draw.text(ctx, 'roll passed the angle of vanishing stability · press Reset', w / 2, h * 0.3 + 28, { size: 12, align: 'center', color: C.bad });
+    }
+  },
+  drawTraces(ctx, w, h) {
+    const rows = [['heave', 1, 'm', C.buoy, RES.Th, []], ['pitch', 2, '°', C.struct, RES.Tp, []], ['roll', 3, '°', C.accent, this.Tr(), [[RES.edge, 'deck edge'], [RES.flood, 'downflooding'], [RES.avs, 'capsize']]]];
+    const rh = h / 3, t1 = this.t;
+    rows.forEach(([n, i, u, col, Tn, lims], r) => {
+      const vals = this.hist.map(q => Math.abs(q[i])), lim = lims.length ? RES.avs : 0;
+      const ym = Math.max(n === 'heave' ? 2 : 5, Math.ceil(Math.max(...vals, 0.1, lim * 0) * 1.15), n === 'roll' ? Math.min(65, Math.max(25, Math.ceil(Math.max(...vals, 0) * 1.2))) : 0);
+      const { X, Y } = Draw.chart(ctx, 44, r * rh + 18, w - 54, rh - 34, { xmin: t1 - 60, xmax: t1, ymin: -ym, ymax: ym, xticks: [], yticks: [-ym, 0, ym].map(v => Math.round(v)), xlabel: r === 2 ? 'last 60 s' : '', ylabel: '' });
+      ctx.save(); ctx.beginPath(); ctx.rect(44, r * rh + 18, w - 54, rh - 34); ctx.clip();
+      lims.forEach(([v, s]) => { if (v <= ym) { [v, -v].forEach(l => Draw.line(ctx, [[X(t1 - 60), Y(l)], [X(t1), Y(l)]], C.bad, 1, [5, 4])); Draw.text(ctx, s, X(t1) - 4, Y(v) - 7, { size: 10, align: 'right', color: C.bad }); } });
+      if (n === 'heave') Draw.line(ctx, this.hist.map(q => [X(q[0]), Y(q[4])]), withAlpha(C.env, 0.8), 1.2);
+      Draw.line(ctx, this.hist.map(q => [X(q[0]), Y(q[i])]), col, 2.2);
+      ctx.restore();
+      Draw.text(ctx, `${n} (${u}) · natural period ${fmt(Tn, 1)} s`, 48, r * rh + 10, { size: 11, color: col });
+      if (n === 'heave') Draw.text(ctx, 'swell at midships', w - 10, r * rh + 10, { size: 10, align: 'right', color: C.env });
+    });
+  },
+  drawAmp(ctx, w, h) {
+    const p = this.p, b = p.beta * D2R, V = p.V * KN, Te = T => { const k = TAU / waveLen(T), we = Math.abs(TAU / T + k * V * Math.cos(b)); return TAU / Math.max(we, 0.05); };
+    const Ts = []; for (let T = 4; T <= 20.001; T += 0.05) Ts.push(T);
+    const curves = [['heave', RES.Th, RES.zh, C.buoy], ['pitch', RES.Tp, RES.zp, C.struct], ['roll', this.Tr(), this.zr(), C.accent]];
+    const ym = 8;
+    const { X, Y } = Draw.chart(ctx, 40, 22, w - 52, h - 54, { xmin: 4, xmax: 20, ymin: 0, ymax: ym, xticks: [4, 8, 12, 16, 20], yticks: [0, 2, 4, 6, 8], xlabel: 'swell period (s) · curves use the encounter period at this speed and heading', ylabel: 'amplification' });
+    ctx.save(); ctx.beginPath(); ctx.rect(40, 22, w - 52, h - 54); ctx.clip();
+    if (Math.abs(Math.cos(b)) > 0.7) {   // parametric roll band: encounter period near half the roll period
+      const band = Ts.filter(T => Math.abs(Te(T) / (this.Tr() / 2) - 1) < 0.15);
+      if (band.length) { ctx.fillStyle = withAlpha(C.bad, 0.13); ctx.fillRect(X(band[0]), 22, X(band[band.length - 1]) - X(band[0]), h - 54); Draw.text(ctx, 'parametric roll zone', X(band[0]) + 4, 34, { size: 10, color: C.bad }); }
+    }
+    curves.forEach(([n, Tn, z, col]) => Draw.line(ctx, Ts.map(T => [X(T), Y(Math.min(ym, this.amp(Tn, z, Te(T))))]), col, 2));
+    ctx.restore();
+    Draw.line(ctx, [[X(p.T), 22], [X(p.T), h - 32]], C.ink, 1.5, [4, 3]);
+    Draw.text(ctx, 'swell now', X(p.T) + 4, h - 40, { size: 10, color: C.ink2 });
+    curves.forEach(([n, , , col], i) => Draw.text(ctx, n, w - 14, 34 + i * 14, { size: 11, align: 'right', color: col }));
+  },
+});
+
+INIT.push(() => {
+  const b = bench('exp-res'); if (!b.root) return;
+  const sim = new ResSim(), trC = $('.resc', b.root), amC = $('.resa', b.root);
+  b.canvas.setAttribute('tabindex', '0');
+  const stage = new Stage(b.canvas, (ctx, w, h) => sim.drawScene(ctx, w, h));
+  const trS = new Stage(trC, (ctx, w, h) => sim.drawTraces(ctx, w, h));
+  const amS = new Stage(amC, (ctx, w, h) => sim.drawAmp(ctx, w, h));
+  let frame = 0;
+  const loop = new Loop({ update: dt => sim.update(dt), render: () => { stage.redraw(); trS.redraw(); if (++frame % 10 === 0) describe(); if (sim.cap) loop.pause(); } }).observe(b.canvas);
+  transport(b.stageBox, loop, { onReset: () => { sim.reset(); describe(); trS.redraw(); }, speeds: [1, 2, 4] });
+  const DANGER = [['green', 'Green water over the bow'], ['slam', 'Bow emerging: slamming'], ['prop', 'Propeller racing'], ['lift', 'Vertical acceleration at bow > 0.5 g'], ['edge', 'Deck edge in the water'], ['cargo', 'Sideways acceleration on cargo > 0.5 g'], ['flood', 'Roll past 40°: downflooding'], ['cap', 'Capsize']];
+  const describe = () => {
+    const W = sim.wave(), p = sim.p, tr = sim.Tr(), pk = sim.peak, near = (a, c) => Math.abs(a / c - 1) < 0.15;
+    const notes = [];
+    if (near(W.Te, tr) && Math.abs(W.sb) > 0.3) notes.push('<strong>Roll resonance:</strong> the swell meets her at her own roll period, and roll damping is small, so each wave adds to the last roll.');
+    if (Math.abs(W.cb) > 0.7 && Math.abs(W.Te / (tr / 2) - 1) < 0.2) notes.push('<strong>Parametric roll risk:</strong> crests and troughs pass along the hull twice per roll period, pumping GM up and down in step with the roll. No sideways push is needed.');
+    if ((near(W.Te, RES.Tp) || near(W.Te, RES.Th)) && Math.abs(W.cb) > 0.5) notes.push('<strong>Pitch and heave resonance:</strong> the bow rises and plunges further than the wave itself: green water, slamming and propeller racing.');
+    if (!notes.length) notes.push('No motion is resonant at this encounter period: the swell is either too slow (she rides it) or too quick (the hull averages it out).');
+    const happened = DANGER.filter(([k]) => sim.ev[k]);
+    b.live(`<div class="readout">${[['Encounter period', fmt(W.Te, 1) + ' s'], ['Roll period', fmt(tr, 1) + ' s'], ['Max roll (recent)', fmt(pk.roll, 1) + '°'], ['Max pitch', fmt(pk.pitch, 1) + '°'], ['Max heave', fmt(pk.heave, 1) + ' m'], ['Side accel. at 14 m', fmt(pk.alat, 2) + ' g']].map(([k, v]) => `<div><span>${k}</span><b>${v}</b></div>`).join('')}</div>
+      <p>${notes.join(' ')}</p>
+      <ul class="dangers">${DANGER.map(([k, s]) => `<li class="${sim.flags[k] ? 'now' : sim.ev[k] ? 'was' : ''}">${s}${sim.ev[k] ? ` <span>×${sim.ev[k]}</span>` : ''}</li>`).join('')}</ul>
+      ${happened.length ? '' : '<p class="hint">Lights show each danger as it happens; counts stay until Reset.</p>'}`);
+  };
+  const redrawAll = () => { stage.redraw(); trS.redraw(); amS.redraw(); describe(); };
+  const set = (k, v) => { sim.p[k] = v; redrawAll(); };
+  const ctl = {};
+  const PRESETS = [
+    ['Beam swell at the roll period', { T: 12, H: 4, beta: 90, V: 0, GM: 1.8, keels: false, loose: true }],
+    ['Head swell, slow: pitch resonance', { T: 8, H: 4, beta: 0, V: 3, GM: 1.8, keels: false, loose: false }],
+    ['Head swell at 8 kn: parametric roll', { T: 8, H: 4, beta: 0, V: 8, GM: 1.8, keels: false, loose: true }],
+    ['Same sea, longer swell (16 s)', { T: 16, H: 4, beta: 90, V: 0, GM: 1.8, keels: false, loose: true }],
+  ];
+  buttons(b.controls, PRESETS.map(([l, o]) => ({ label: l, onClick: () => { Object.assign(sim.p, o); sim.reset(); Object.keys(ctl).forEach(k => ctl[k].set(o[k])); redrawAll(); if (!Motion.reduced) loop.play(); } })));
+  ctl.T = slider(b.controls, { id: 'res-t', label: 'Swell period', min: 4, max: 20, step: 0.5, value: 12, fmt: v => fmt(v, 1) + ' s', onInput: v => set('T', v) });
+  ctl.H = slider(b.controls, { id: 'res-h', label: 'Swell height', min: 0.5, max: 8, step: 0.5, value: 3, fmt: v => fmt(v, 1) + ' m', onInput: v => set('H', v) });
+  ctl.beta = slider(b.controls, { id: 'res-b', label: 'Swell direction relative to bow', min: 0, max: 180, step: 15, value: 90, fmt: v => v + '° (' + headingName(v) + ')', onInput: v => set('beta', v) });
+  ctl.V = slider(b.controls, { id: 'res-v', label: 'Ship speed', min: 0, max: 15, step: 1, value: 0, unit: 'kn', hint: 'Speed and heading change the encounter period', onInput: v => set('V', v) });
+  ctl.GM = slider(b.controls, { id: 'res-gm', label: 'GM (sets the roll period)', min: 0.6, max: 4, step: 0.1, value: 1.8, fmt: v => fmt(v, 1) + ' m → ' + fmt(TAU * 0.4 * RES.B / Math.sqrt(GRAV * v), 1) + ' s', onInput: v => set('GM', v) });
+  const ck = (id, k, label) => { ctl[k] = check(b.controls, { id, label, value: false, onChange: v => set(k, v) }); };
+  ck('res-k', 'keels', 'Bilge keels (roll damping ×3)');
+  ck('res-l', 'loose', 'Cargo poorly secured (can shift)');
+  let drag = null;
+  b.canvas.addEventListener('pointerdown', e => { const c = sim.cam(); drag = [e.clientX, e.clientY, c.az, c.el]; b.canvas.setPointerCapture(e.pointerId); });
+  b.canvas.addEventListener('pointermove', e => { if (!drag) return; const c = sim.cam(); c.az = drag[2] + (e.clientX - drag[0]) * 0.008; c.el = clamp(drag[3] + (e.clientY - drag[1]) * 0.006, 0.02, 1.2); stage.redraw(); });
+  b.canvas.addEventListener('pointerup', () => drag = null);
+  b.canvas.addEventListener('keydown', e => { const m = { ArrowLeft: [-0.1, 0], ArrowRight: [0.1, 0], ArrowUp: [0, 0.08], ArrowDown: [0, -0.08] }[e.key]; if (m) { e.preventDefault(); const c = sim.cam(); c.az += m[0]; c.el = clamp(c.el + m[1], 0.02, 1.2); stage.redraw(); } });
+  b.canvas.style.touchAction = 'none';
+  Object.assign(sim.p, PRESETS[0][1]); Object.keys(ctl).forEach(k => ctl[k].set(PRESETS[0][1][k]));
+  if (Motion.reduced) sim.run(40);
+  redrawAll();
 });
 
 /* ===================== Module 8: Resistance and towing ===================== */
