@@ -414,6 +414,7 @@ button.t:hover, button.t[aria-expanded="true"] { border-bottom-color: var(--acce
 .drawer dd .gf { max-width: 360px; margin-top: 6px; }
 .ballast-fig { margin: 14px 0; }
 .ballast-fig .gf { max-width: 640px; margin: 30px auto 0; }
+.roll-damp-fig .gf { max-width: 560px; margin: 0 auto; }
 .tip { max-width: min(340px, calc(100vw - 32px)); }
 
 /* full-screen diagrams: the container covers the page (above the top bar, below the glossary drawer and tooltips) */
@@ -1919,7 +1920,7 @@ footer.site { border-top: 1px solid var(--rule); margin-top: 40px; padding-block
 
     <div class="explain">
       <div class="why"><h4>Why it builds up</h4>
-        <p>Each swell adds the same small push. At resonance the pushes arrive in step with the motion, so the energy accumulates until damping takes out as much per cycle as the waves put in. Heave and pitch lose energy quickly by making waves; roll hardly does, which is why roll resonance amplifies a swell of a few degrees' slope into tens of degrees.</p>
+        <p>Each swell adds the same small push. At resonance the pushes arrive in step with the motion, so the energy accumulates until damping takes out as much per cycle as the waves put in. Heave and pitch lose energy quickly by making waves; roll hardly does (see the optional detail below), which is why roll resonance amplifies a swell of a few degrees' slope into tens of degrees.</p>
         <p>Large roll also changes the ship: the righting lever stops growing past the deck edge, so the roll period lengthens. That detuning can save her, or, with cargo that has shifted, take her past the point of no return.</p>
       </div>
       <div class="decision"><h4>Offshore decision</h4>
@@ -1929,6 +1930,22 @@ footer.site { border-top: 1px solid var(--rule); margin-top: 40px; padding-block
         <p><strong>"Small swell, calm day, no problem."</strong> A low, long swell near the roll period can roll a ship harder than a rough wind sea. In 1998 the container ship APL China rolled violently in a head sea from parametric roll and lost and damaged hundreds of containers; in 2020 ONE Apus lost more than 1,800 overboard in heavy rolling in the Pacific.</p>
       </div>
     </div>
+    <details class="math"><summary>Optional detail: why roll hardly makes waves, and what damps it instead</summary><div>
+      <figure class="fig roll-damp-fig"><svg class="gf" viewBox="0 0 360 160" role="img" aria-label="Two ship cross-sections. Left, heaving: the flat bottom moves straight up and down and pushes water, radiating waves to both sides. Right, rolling about a point near the waterline: arrows along the bottom and sides show the hull surface mostly sliding past the water, so few waves are made."><rect x="0" y="62" width="360" height="98" class="w"/><path class="wl" d="M0,62Q8,56 16,62T32,62T48,62"/><path class="wl" d="M48,62L132,62"/><path class="wl" d="M132,62Q140,56 148,62T164,62T180,62"/><path class="h" d="M50,40L50,84Q50,96 62,96L118,96Q130,96 130,84L130,40Z"/><path class="bu" d="M66,100L66,122"/><path class="bu ah" d="M66.0,122.0L63.0,116.0L69.0,116.0Z"/><path class="bu" d="M90,100L90,122"/><path class="bu ah" d="M90.0,122.0L87.0,116.0L93.0,116.0Z"/><path class="bu" d="M114,100L114,122"/><path class="bu ah" d="M114.0,122.0L111.0,116.0L117.0,116.0Z"/><path class="ink" d="M90,34L90,12"/><path class="ink ah" d="M90.0,10.0L93.0,16.0L87.0,16.0Z"/><path class="ink ah" d="M90.0,36.0L87.0,30.0L93.0,30.0Z"/><text x="90" y="140" text-anchor="middle">heave: the bottom pushes water</text><text x="90" y="152" text-anchor="middle" class="but">a piston: waves radiate away</text><text x="12" y="52" class="but">waves</text><text x="168" y="52" text-anchor="end" class="but">waves</text><path class="wl" d="M180,62L360,62"/><path class="h" d="M230,40L230,84Q230,96 242,96L298,96Q310,96 310,84L310,40Z"/><circle cx="270" cy="62" r="3" class="dot"/><path class="hl" d="M250,104L288,104"/><path class="hl ah" d="M288.0,104.0L282.0,107.0L282.0,101.0Z"/><path class="hl" d="M316,82L316,52"/><path class="hl ah" d="M316.0,52.0L319.0,58.0L313.0,58.0Z"/><path class="hl" d="M224,46L224,76"/><path class="hl ah" d="M224.0,76.0L221.0,70.0L227.0,70.0Z"/><path class="ink" d="M288,24A22,22 0 0 0 252,24"/><path class="ink ah" d="M252.0,24.0L253.2,17.3L246.6,20.8Z"/><text x="270" y="140" text-anchor="middle">roll: the surface mostly slides</text><text x="270" y="152" text-anchor="middle" class="hlt">past the water: few waves</text></svg>
+        <figcaption>A hull makes waves by pushing water at right angles to its surface. In heave the whole bottom does that, like a piston. In roll about an axis near the waterline, most of a round-bilged section moves along its own surface and pushes almost nothing.</figcaption>
+      </figure>
+      <p><strong>Geometry.</strong> A circular log rolling about its centre makes no waves at all: every point of its surface only slides. A ship's section, with rounded bilges and its roll axis near mid-depth, is not far from that. Only the flat bottom near the corners and the sides near the waterline push water, and only a little. Heave and pitch move the whole bottom (and in pitch, the ends most of all) straight into the water.</p>
+      <p><strong>Speed.</strong> A body radiates waves well only when it is a fair size compared with the waves it makes. Heaving at about 7 s, the ship makes waves about 75 m long, comparable with its own size. Rolling at about 12 s it would make waves about 225 m long from a 20 m beam: a small paddle moved slowly. Radiation damping falls towards zero as the motion gets slower.</p>
+      <div class="tablewrap"><table>
+        <thead><tr><th>Motion</th><th>Typical damping ratio ζ</th><th>Peak amplification ≈ 1 ÷ 2ζ</th><th>Main source of damping</th></tr></thead>
+        <tbody>
+          <tr><td>Heave</td><td>0.2 to 0.4</td><td>about 1.5 to 2.5×</td><td>Waves radiated by the hull</td></tr>
+          <tr><td>Pitch</td><td>0.15 to 0.3</td><td>about 2 to 3×</td><td>Waves radiated by the hull</td></tr>
+          <tr><td>Roll</td><td>0.02 to 0.05 (bare hull)</td><td>about 10 to 25×</td><td>Eddies at the bilges and skin friction; radiated waves are a small part</td></tr>
+        </tbody>
+      </table></div>
+      <p><strong>So roll damping has to be made, and it comes from turbulence.</strong> Bilge keels shed vortices at the turn of the bilge every roll; anti-roll tanks move water out of step with the roll; fins generate lift once the ship has way on (topic <a href="#t9-4">9.4</a>). A box barge's sharp corners shed eddies too, so it damps roll a little better than a round-bilged ship, although its large GM brings a quick, hard roll instead (topic <a href="#t7-4">7.4</a>). Because this damping is viscous and grows with roll speed, it is nonlinear, which is why analysts calibrate it from model tests rather than taking it from diffraction software, whose damping is radiation only.</p>
+    </div></details>
     <div class="cards">
       <div class="card"><h4>Move the encounter period</h4><span class="unit">course and speed</span><p>Speed into a head swell shortens the encounter period; turning to run with it lengthens it. Small changes can move a ship off a resonance peak or out of the parametric zone. Heavy-weather guidance for container ships tells masters which combinations to avoid.</p></div>
       <div class="card"><h4>Move the natural period</h4><span class="unit">GM, ballast, design</span><p>Roll period goes with 1/√GM. More GM shortens it (stiffer, quicker roll, higher accelerations); less lengthens it. Semi-submersibles and spars are designed with heave periods far above any swell (topic 9.5).</p></div>
