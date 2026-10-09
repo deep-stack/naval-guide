@@ -484,6 +484,19 @@ html.fs-locked { overflow: hidden; }
 .ships .src { font-size: .82rem; color: var(--ink-3); }
 .ships td:first-child { font-weight: 700; }
 
+/* load line mark (topic 3.5) */
+.ll-stage .llsv { min-width: 480px; }
+.llsv .plate { fill: var(--hull-fill); } .llsv .deck { fill: var(--hull); opacity: .6; }
+.llsv .brk { fill: none; stroke: var(--surface); stroke-width: 3; }
+.llsv .paint { fill: var(--ink); } .llsv .paint.on { fill: var(--accent); }
+.llsv .ring { fill: none; stroke: var(--ink); }
+.llsv text.auth { font: 700 80px var(--f-display); fill: var(--ink); }
+.llsv text.ln { font: 700 15px var(--f-mono); fill: var(--ink); } .llsv text.ln.on { fill: var(--accent); }
+.llsv text.lt { font-size: 12px; }
+.llsv .wtr { fill: var(--water); opacity: .55; } .llsv .wl { stroke: var(--water-line); stroke-width: 2; }
+.llsv .lim { stroke: var(--accent); stroke-width: 1.5; stroke-dasharray: 6 4; } .llsv text.limt { fill: var(--accent); font-weight: 700; }
+.llsv text.wlt { fill: var(--water-line); font-weight: 700; }
+
 /* vessel anatomy (Module 1) */
 .anat { margin: 0; background: var(--surface); border: 1px solid var(--rule); border-radius: 8px; box-shadow: var(--shadow); overflow: hidden; }
 .anat-bar { display: flex; gap: 10px 16px; justify-content: space-between; align-items: center; flex-wrap: wrap; padding: 12px 14px; border-bottom: 1px solid var(--rule); }
@@ -1103,6 +1116,72 @@ footer.site { border-top: 1px solid var(--rule); margin-top: 40px; padding-block
     </div>
   </div>
 
+  <div class="topic" id="t3-5">
+    <h3><span class="tn">3.5</span>The load line mark: how deep is too deep</h3>
+    <div class="prose">
+      <p>Freeboard is the vessel's reserve: buoyancy above the water for waves, damage and heel, and height to keep the sea off the deck. Overloading spends that reserve where nobody can see it. The <button class="t" type="button" data-t="load-line">load line mark</button> makes the limit visible: a ring and bar painted on both sides amidships, with a short ladder of lines beside it. Whatever the vessel carries, the line for its zone, season and water must never be under water.</p>
+      <p>The painted shapes are the same size on every ship: a 20 m coaster carries the same 300 mm ring as a 400 m container ship. What changes is where the ring sits (the ship's assigned summer freeboard below the deck line) and how far apart the lines are, which follows the ship's own draught and displacement.</p>
+      <p>The mark was a hard-won reform. In 19th-century Britain, overloaded and over-insured "coffin ships" sank with their crews; the campaigner Samuel Plimsoll forced a compulsory mark into law in 1876, which is why it is still called the Plimsoll line. Today the International Convention on Load Lines (1966, amended by its 1988 Protocol) applies to almost every ship of 24 m or more on international voyages.</p>
+    </div>
+    <figure class="exp" id="exp-loadline">
+      <div class="exp-stage">
+        <div class="exp-title"><h4>Load line mark, starboard side</h4><span class="tag quant">Quantitative · rule geometry</span></div>
+        <div class="ll-stage sv-scroll"></div>
+      </div>
+      <div class="exp-side">
+        <div class="controls"></div>
+        <div class="look"><b>Look for</b>Switch the water to fresh and load until the waterline reaches the F line: the vessel is legally full, yet the S line is under water. Steam out to sea and she rises to S. Then pick Winter North Atlantic and see how much cargo the season costs. Finally switch ships: the ring and bar stay the same size, but the ladder spreads out on the deep-draught ship.</div>
+        <div class="live" aria-live="polite"></div>
+      </div>
+      <figcaption class="exp-foot"><span><b>Model:</b> three ships. An example 95 m general cargo ship: summer draught 6.00 m, summer displacement 6,600 t in seawater, TPC 12.5 t/cm, summer freeboard 1,600 mm. The 91 m deck barge of 14.2 (draught 4.89 m, freeboard 1,205 mm) and Ever Given (draught 16.0 m, freeboard about 16.9 m), whose displacements and TPC are estimates from their main dimensions. Mark dimensions and line spacing follow the 1966 Convention (Regulations 4 to 8 and 40): T and W are 1/48 of the summer draught above and below S; WNA is 50 mm below W; the fresh water allowance is Δ ÷ (40 × TPC) cm. All three are drawn at the same scale, so the painted mark is the same size each time; only its spacing changes. The deck line is moved down (break in the hull) to fit.</span></figcaption>
+    </figure>
+
+    <div class="tablewrap"><table>
+      <thead><tr><th>Mark</th><th>Name</th><th>Where it is</th><th>Use it when</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Deck line</strong></td><td><button class="t" type="button" data-t="deck-line">Deck line</button></td><td>300 × 25 mm bar; its top edge is level with the top of the freeboard deck at the side</td><td>The datum: every freeboard is measured down from its top edge</td></tr>
+        <tr><td><strong>Ring and bar</strong></td><td>Load line mark (Plimsoll disc)</td><td>Ring 300 mm across, 25 mm thick; bar 450 mm long through its centre. The centre sits the summer freeboard below the deck line, amidships</td><td>Its bar marks the summer line in seawater. The letters beside it name the authority that assigned the freeboard (for example LR, AB, NV)</td></tr>
+        <tr><td><strong>S</strong></td><td>Summer</td><td>Top edge level with the centre of the ring</td><td>Summer zones and seasons, in seawater</td></tr>
+        <tr><td><strong>T</strong></td><td>Tropical</td><td>1/48 of the summer draught above S</td><td>Tropical zones: calmer, so a little less freeboard</td></tr>
+        <tr><td><strong>W</strong></td><td>Winter</td><td>1/48 of the summer draught below S</td><td>Winter seasonal zones: rougher, so more freeboard</td></tr>
+        <tr><td><strong>WNA</strong></td><td>Winter North Atlantic</td><td>50 mm below W; only on ships up to 100 m long</td><td>Crossing the North Atlantic in winter, the roughest common route</td></tr>
+        <tr><td><strong>F</strong></td><td>Fresh water</td><td>Fresh water allowance (FWA) above S, on the aft side</td><td>Summer loading in fresh water: she will rise to S on reaching the sea</td></tr>
+        <tr><td><strong>TF</strong></td><td>Tropical fresh</td><td>FWA above T, on the aft side</td><td>Tropical loading in fresh water</td></tr>
+      </tbody>
+    </table></div>
+
+    <div class="explain">
+      <div class="why"><h4>Why the lines step</h4>
+        <p>The summer freeboard is the baseline. Calmer seas allow a little less reserve (T), rougher ones demand more (W, WNA). The fresh-water lines are not about weather at all: fresh water is less dense, so the same ship floats deeper in it. Loading to F in a river port leaves her exactly at S once she reaches seawater.</p>
+      </div>
+      <div class="decision"><h4>Offshore decision</h4>
+        <p>Barges and heavy transport vessels carry load line certificates too. A marine warranty surveyor checks that the loaded draught for the tow, including ballast, seafastening and any water trapped on deck, leaves the vessel above its line for the zone and season of the route. Cargo that overhangs or sits above the freeboard deck may need a special or one-voyage exemption from the flag state.</p>
+      </div>
+      <div class="myth"><h4>Misconception</h4>
+        <p><strong>"The Plimsoll line shows the draught."</strong> It shows a limit, not a reading. Draught is read from the <button class="t" type="button" data-t="draft-marks">draft marks</button> at bow, stern and amidships. The load line says how far down those readings may go, and it may legally be under water in fresh or brackish water.</p>
+      </div>
+    </div>
+
+    <div class="cards">
+      <div class="card"><h4>How the summer freeboard is set</h4><span class="unit">length · type · corrections</span><p>The rules start from a table freeboard that grows with ship length. <strong>Type A</strong> ships (tankers: liquid cargo, small, gas-tight openings, high subdivision) get less than <strong>Type B</strong> (everything else). The figure is then corrected: up for full hulls (block coefficient above 0.68) and for depth greater than L/15; down for enclosed superstructures and sheer that add reserve buoyancy. A minimum bow height keeps the forecastle out of head seas.</p></div>
+      <div class="card"><h4>Conditions of assignment</h4><span class="unit">the openings must be tight</span><p>A freeboard only counts if water cannot get in above it. So the same rules fix the strength of hatch covers, the sill heights of doors, the height of <button class="t" type="button" data-t="air-pipe">air pipes</button> (760 mm on the freeboard deck) and ventilators, the area of <button class="t" type="button" data-t="freeing-port">freeing ports</button> in bulwarks, and guard rails for the crew. Module 2 shows where each one is.</p></div>
+      <div class="card"><h4>Zones and seasons</h4><span class="unit">a world chart</span><p>The Convention's chart divides the oceans into tropical zones, summer zones and seasonal areas whose rule changes with the date: winter in the North Atlantic from October to April, for example. A voyage plan checks the line for every zone on the route; a ship leaving the tropics must be light enough for the next zone by the time she enters it.</p></div>
+      <div class="card"><h4>Timber load lines</h4><span class="unit">LS · LT · LW · LF · LTF</span><p>Ships certified to carry timber stowed solidly on deck get a second ladder, prefixed L, on the aft side. A well-secured timber deck cargo adds buoyancy and keeps seas off the deck, so the rules allow it a little less freeboard.</p></div>
+      <div class="card"><h4>Certificate and surveys</h4><span class="unit">5-year certificate, annual checks</span><p>The International Load Line Certificate records the assigned freeboards and the FWA. It is renewed every five years, with annual surveys to confirm that the marks and every closing appliance are still as approved. Ports can detain a ship found loaded beyond her mark.</p></div>
+      <div class="card"><h4>Barges</h4><span class="unit">simple hull, simple rules</span><p>An unmanned barge with only small deck openings closed watertight is a low-risk hull, and the rules allow it a reduced freeboard. That is one reason a deck barge such as the one in <a href="#t14-2">14.2</a> can load to only about 1.2 m of freeboard, and why water on deck and open manholes worry tow surveyors so much.</p></div>
+    </div>
+
+    <details class="math"><summary>Optional detail: line spacing, fresh and dock water allowances</summary><div>
+      <p>With summer draught T<sub>S</sub>, summer displacement Δ (t, in seawater) and TPC (t/cm, at the summer waterline):</p>
+      <p class="eq">T line = S + T<sub>S</sub>/48 &nbsp;·&nbsp; W line = S − T<sub>S</sub>/48 &nbsp;·&nbsp; WNA = W − 50 mm</p>
+      <p class="eq">Fresh water allowance FWA (cm) = Δ ÷ (40 × TPC)</p>
+      <p class="eq">Dock water allowance DWA = FWA × (1,025 − ρ<sub>dock</sub>) ÷ 25 &nbsp;&nbsp;(ρ in kg/m³)</p>
+      <p>For the example ship: T<sub>S</sub>/48 = 6,000 ÷ 48 = 125 mm; FWA = 6,600 ÷ (40 × 12.5) = 13.2 cm = 132 mm. Loading in brackish dock water of 1,010 kg/m³ she may submerge her line by 132 × 15 ÷ 25 ≈ 79 mm, which at 12.5 t/cm is about 99 t of extra cargo.</p>
+      <p>Where the 40 comes from: in fresh water the same mass Δ needs more volume, Δ/1.000 − Δ/1.025 = 0.025 Δ ÷ 1.025 m³. Each centimetre of sinkage adds TPC ÷ 1.025 m³. Divide one by the other and the 1.025s cancel: sinkage = 0.025 Δ ÷ TPC = Δ ÷ (40 × TPC) cm. The DWA scales this linearly for water between fresh and salt.</p>
+    </div></details>
+    <p class="famlink">Easily confused terms: <a href="#t13-5">13.5 Where it is measured from</a> · Parts named: <a href="#anat">Module 2 · Anatomy of a vessel</a></p>
+  </div>
+
   <p class="watch"><span class="cc-label">Watch</span> <a href="https://www.youtube.com/watch?v=w3jreuX_7HI" target="_blank" rel="noopener">Animation on How 200,000 Tons of Steel Can Actually Float</a> <span class="ch">(Animations Xplaned)</span> · <a href="https://www.youtube.com/watch?v=xniW3_afO-0" target="_blank" rel="noopener">How do ships float? Buoyancy!</a> <span class="ch">(learnbiologically)</span> · <a href="#watch">more videos</a></p>
   <div class="recap">
     <h3>What you should now understand</h3>
@@ -1111,6 +1190,7 @@ footer.site { border-top: 1px solid var(--rule); margin-top: 40px; padding-block
       <li>Draft is how deep the hull sits; freeboard is how much hull remains above water. Adding weight increases draft and reduces freeboard.</li>
       <li>A wider waterplane needs less extra immersion per tonne added (higher TPC).</li>
       <li>Displacement (a mass), capacity (a volume) and tonnage (an index) are different things.</li>
+      <li>The load line mark sets the minimum freeboard: one line per zone and season, with fresh-water lines because ships float deeper in fresh water.</li>
     </ul>
   </div>
   <div class="predictions" id="m1-predict"></div>
@@ -4181,7 +4261,10 @@ const GLOSSARY = {
   'ventilator': ['Ventilator', 'A duct that brings fresh air to spaces below deck, such as the engine room. Its opening is a downflooding point: if the vessel heels far enough to put it under water, water pours in.', 'anat'],
   'downflooding': ['Downflooding angle', 'The heel angle at which an opening that is not watertight (a ventilator, an open door) reaches the water. Beyond it the vessel floods, so stability calculations ignore the GZ curve past this angle.', 'anat'],
   'draft-marks': ['Draft marks', 'Numbers painted on the hull at the bow, stern and amidships on both sides, showing depth below the waterline. Reading all six gives mean draft, trim and heel, and, through the hydrostatic tables, the displacement (a "draft survey").', 'anat'],
-  'load-line': ['Load line (Plimsoll) mark', 'A ring and bar painted amidships, with lines for different seasons and waters (tropical, summer, winter, fresh). The vessel must never be loaded so deep that the line for its route and season is under water. It guarantees a minimum freeboard, and with it reserve buoyancy.', 'anat'],
+  'load-line': ['Load line (Plimsoll) mark', 'A ring and bar painted amidships, with lines for different seasons and waters (tropical, summer, winter, fresh). The vessel must never be loaded so deep that the line for its route and season is under water. It guarantees a minimum freeboard, and with it reserve buoyancy.', 'm1'],
+  'deck-line': ['Deck line', 'A 300 mm bar painted amidships on each side whose top edge marks the top of the freeboard deck. Every load line freeboard is measured down from it.', 'm1'],
+  'fwa': ['Fresh water allowance (FWA)', 'How much deeper a ship floats in fresh water than in seawater at its summer displacement: Δ ÷ (40 × TPC) centimetres. It sets the F and TF lines, and a ship loading in fresh water may submerge its seawater line by this much.', 'm1'],
+  'dwa': ['Dock water allowance (DWA)', 'The fresh water allowance scaled for brackish water: FWA × (1,025 − ρ) ÷ 25, with ρ the dock water density in kg/m³. How far the load line may be submerged when loading in a river or estuary port.', 'm1'],
   'loa': ['Length overall (LOA)', 'The extreme length of the hull, from its foremost to its aftmost point. Used for berths and docks; calculations usually use the waterline length or the length between perpendiculars instead.', 'anat'],
   'depth': ['Moulded depth (D)', 'The height from the keel to the main deck at the side, measured amidships. Depth = draft + freeboard. A deeper hull is a stiffer, stronger beam (Module 10).', 'anat'],
   'rake': ['Rake', 'The sloped end of a barge hull, angled from the bottom up to the deck. It lets the barge ride over the water instead of pushing a flat face through it, which cuts towing resistance and slamming.', 'anat'],
@@ -4397,7 +4480,7 @@ const GLOSS_ALIAS = {
   'bulbous-bow': ['bulbous bows?'], 'forecastle': ['forecastles?'], 'forepeak': ['forepeak( tanks?)?'], 'aft-peak': ['aft peak( tanks?)?'],
   'collision-bulkhead': ['collision bulkheads?'], 'cargo-hold': ['cargo holds?'], 'hatch-cover': ['hatch covers?'], 'hatch-coaming': ['coamings?'],
   'double-bottom': ['double[- ]bottoms?'], 'ballast-tank': ['ballast tanks?'], 'engine-room': ['engine rooms?'], 'superstructure': ['superstructures?'],
-  'air-pipe': ['air pipes?'], 'freeing-port': ['freeing ports?'], 'bulwark': ['bulwarks?'], 'load-line': ['load[- ]lines?'], 'draft-marks': ['draft marks'],
+  'air-pipe': ['air pipes?'], 'freeing-port': ['freeing ports?'], 'bulwark': ['bulwarks?'], 'load-line': ['load[- ]lines?'], 'deck-line': ['deck line'], 'fwa': ['fresh water allowance', 'FWA'], 'dwa': ['dock water allowance', 'DWA'], 'draft-marks': ['draft marks'],
   'skeg': ['skegs?'], 'manhole': ['manholes?'], 'sounding-pipe': ['sounding pipes?'], 'wing-tank': ['wing tanks?'], 'emergency-towline': ['emergency towlines?'],
   'towing-bracket': ['towing brackets?'], 'downflooding': ['downflooding( angle| points?)?'], 'longitudinal-bulkhead': ['longitudinal bulkheads?'],
   'transverse-bulkhead': ['transverse bulkheads?'], 'inner-bottom': ['inner bottom', 'tank top'], 'camber': ['camber'], 'propeller': ['propellers?'],
@@ -4450,7 +4533,7 @@ const GLOSS_ALIAS = {
   'parametric-roll': ['parametric roll'], 'girting': ['girting'], 'heavy-transport-vessel': ['heavy transport vessels?'], 'flng': ['FLNG'], 'windage': ['windage'],
 };
 // Aliases matched case-sensitively (abbreviations that clash with ordinary words or units)
-const GLOSS_CASE = new Set(['daf', 'hmax', 'ukc', 'kilonewton', 'megapascal', 'gm', 'gz', 'kg', 'hs', 'api', 'abs', 'imo', 'dnv', 'tpc', 'fpso', 'ansys', 'fea', 'rao', 'psi', 'meganewton', 'hertz']);
+const GLOSS_CASE = new Set(['fwa', 'dwa', 'daf', 'hmax', 'ukc', 'kilonewton', 'megapascal', 'gm', 'gz', 'kg', 'hs', 'api', 'abs', 'imo', 'dnv', 'tpc', 'fpso', 'ansys', 'fea', 'rao', 'psi', 'meganewton', 'hertz']);
 
 /* Families of easily confused terms (Module 13). Each: [topic anchor, topic number, family name, keys].
    The glossary and the term tooltips list the other members of each family a term belongs to. */
@@ -4494,6 +4577,7 @@ FAMILIES.push(
   ['t9-4', '9.4', 'roll reduction', ['bilge-keel', 'fin-stabiliser', 'anti-roll-tank']],
   ['t9-5', '9.5', 'floater types', ['barge', 'fpso', 'semi-sub', 'spar']],
   ['t5-2', '5.2', 'liquid in tanks', ['free-surface', 'sloshing', 'swash-bulkhead', 'longitudinal-bulkhead', 'anti-roll-tank']],
+  ['t3-5', '3.5', 'the load line mark', ['load-line', 'deck-line', 'fwa', 'dwa', 'freeboard', 'reserve-buoyancy', 'draft-marks']],
   ['t2-3', '2.3', 'the ballast system', ['ballast-tank', 'sea-chest', 'ballast-main', 'ballast-pump', 'stripping', 'air-pipe', 'sounding-pipe']],
   ['units', 'Units', 'pressure and stress units', ['bar', 'psi', 'megapascal', 'pressure-head', 'gauge-pressure', 'absolute-pressure']],
   ['units', 'Units', 'frequency and angle units', ['hertz', 'radian', 'frequency', 'wave-period']],
@@ -5106,8 +5190,8 @@ const Anat = (() => {
     s += grp('propeller', E('', 'prop', 198, 438, 5, 16) + E('', 'prop', 198, 472, 5, 16) + O('', 'hub', 198, 455, 5));
     s += grp('rudder', P('', 'rud', 'M150,404 L180,404 L182,490 Q166,494 150,488 Z') + L('', 'thin', 165, 404, 165, 388));
     // load line and draft marks
-    s += grp('load-line', `<circle class="ll" cx="622" cy="422" r="11"/><line class="ll" x1="604" y1="422" x2="640" y2="422"/><line class="ll" x1="652" y1="408" x2="652" y2="436"/>` +
-      [[410, 'T'], [418, 'S'], [426, 'W']].map(([y, t]) => `<line class="ll" x1="652" y1="${y}" x2="664" y2="${y}"/><text class="llt" x="668" y="${y + 3}">${t}</text>`).join('') + `<line class="ll" x1="600" y1="338" x2="644" y2="338"/>`);
+    s += grp('load-line', `<circle class="ll" cx="622" cy="422" r="11"/><line class="ll" x1="604" y1="422" x2="640" y2="422"/><line class="ll" x1="652" y1="410" x2="652" y2="434"/>` +
+      [[414, 'T'], [422, 'S'], [430, 'W']].map(([y, t]) => `<line class="ll" x1="652" y1="${y}" x2="664" y2="${y}"/><text class="llt" x="668" y="${y + 3}">${t}</text>`).join('') + `<line class="ll" x1="600" y1="338" x2="644" y2="338"/>`);
     s += grp('draft-marks', [[492, '2M'], [472, '4M'], [452, '6M'], [432, '8M']].map(([y, t]) => `<text class="dm" x="1018" y="${y}">${t}</text>`).join(''));
     // superstructure, bridge, funnel, mast, lifeboat
     s += grp('superstructure', R('', 'sup', 236, 240, 112, 90) + [254, 282, 310].map(y => [250, 272, 294, 316].map(x => R('', 'win', x, y, 12, 8)).join('')).join(''));
@@ -5776,6 +5860,107 @@ INIT.push(() => {
       },
     },
   ]);
+});
+
+/* ---- 3.5 Load line mark (1966 Convention geometry, all in mm, z up from the summer line) ---- */
+// The painted mark is the same size on every ship; its position and line spacing come from each ship's particulars.
+const LL_SHIPS = {
+  cargo: { n: '95 m cargo ship', L: 95, Ts: 6000, D0: 6600, TPC: 12.5, fb: 1600, est: false },
+  barge: { n: '91 m deck barge', L: 91.44, Ts: 4891, D0: 13000, TPC: 27.1, fb: 1205, est: true },
+  eg: { n: 'Ever Given (400 m)', L: 400, Ts: 16000, D0: 250000, TPC: 198, fb: 16900, est: true },
+};
+class LoadLineSim {
+  constructor(p = {}) {
+    this.p = Object.assign({ ship: 'cargo', zone: 'S', rho: 1025 }, p);
+    this.setShip(this.p.ship, p.disp);
+  }
+  setShip(k, disp) { Object.assign(this.p, LL_SHIPS[k], { ship: k }); this.p.disp = disp !== undefined ? disp : this.p.D0; }
+  get fwa() { return this.p.D0 / (40 * this.p.TPC) * 10; }                       // mm
+  get hasWNA() { return this.p.L <= 100; }                                         // WNA is marked only on ships up to 100 m
+  lines() {
+    const d = this.p.Ts / 48, f = this.fwa, l = { S: 0, T: d, W: -d, F: f, TF: d + f };
+    if (this.hasWNA) l.WNA = -d - 50;
+    return l;
+  }
+  zoneLine() { return this.p.zone === 'WNA' && !this.hasWNA ? 'W' : this.p.zone; }   // longer ships use W in the North Atlantic
+  dwa(rho = this.p.rho) { return this.fwa * (1025 - rho) / 25; }                 // mm the zone line may be submerged
+  // waterline above the top of the S line: sinkage from extra displacement, plus from lower density (exact)
+  zwl(disp = this.p.disp, rho = this.p.rho) { const p = this.p; return 10 * (disp * 1025 / rho - p.D0) / p.TPC; }
+  limit() { return this.lines()[this.zoneLine()] + this.dwa(); }
+  maxDisp() { const p = this.p; return (this.limit() * p.TPC / 10 + p.D0) * p.rho / 1025; }
+  calc() {
+    const z = this.zwl(), lim = this.limit();
+    return { z, lim, margin: lim - z, marginT: this.maxDisp() - this.p.disp, zSea: this.zwl(this.p.disp, 1025), fbNow: this.p.fb - z, dwa: this.dwa(), fwa: this.fwa, step: this.p.Ts / 48 };
+  }
+  svg() {
+    const L = this.lines(), r = this.calc(), zl = this.zoneLine(), f = n => +n.toFixed(1);
+    // one scale for every ship, so the mark is always drawn the same size; the window grows to fit the ladder
+    const k = 0.42, W = 760, zTop = L.TF + 25, zBot = (L.WNA !== undefined ? L.WNA : L.W) - 25;
+    const deckZ = zTop + 260, zb = zTop + 150, top = deckZ + 40 + 70, bot = zBot - 330;
+    const H = Math.round((top - bot) * k), x0 = 290, y0 = top * k;
+    const X = x => +(x0 + x * k).toFixed(1), Y = z => +(y0 - z * k).toFixed(1);
+    const R = (x, z, w, h, c) => `<rect class="${c}" x="${X(x)}" y="${Y(z)}" width="${f(w * k)}" height="${f(h * k)}"/>`;
+    let s = `<rect class="plate" x="0" y="${Y(deckZ + 40)}" width="${W}" height="${H}"/>`;
+    // hull break between the mark and the deck line (the true gap is the summer freeboard)
+    const zig = Array.from({ length: 21 }, (_, i) => `${f(i * 40)},${f(Y(zb) + (i % 2 ? 7 : -7))}`).join(' ');
+    s += `<polyline class="brk" points="${zig}"/><polyline class="brk" points="${zig.split(' ').map(q => { const [a, b] = q.split(','); return a + ',' + f(+b + 14); }).join(' ')}"/>`;
+    s += `<rect class="deck" x="0" y="${Y(deckZ + 40)}" width="${W}" height="${f(40 * k)}"/><text class="lt" x="10" y="${f(Y(deckZ + 40) - 6)}">freeboard deck</text>`;
+    s += R(-150, deckZ, 300, 25, 'paint');
+    s += `<g class="dim"><line x1="${X(-360)}" y1="${Y(deckZ)}" x2="${X(-360)}" y2="${Y(0)}"/><line x1="${X(-390)}" y1="${Y(deckZ)}" x2="${X(-330)}" y2="${Y(deckZ)}"/><line x1="${X(-390)}" y1="${Y(0)}" x2="${X(-330)}" y2="${Y(0)}"/></g>`;
+    s += `<text class="lt" x="${X(170)}" y="${f(Y(deckZ) + 10)}">deck line, ${fmt(this.p.fb, 0)} mm above S</text><text class="lt" x="${X(170)}" y="${f(Y(deckZ) + 26)}">(the summer freeboard; hull shortened)</text>`;
+    // ring, bar and authority letters: identical on every ship
+    s += `<circle class="ring" cx="${X(0)}" cy="${Y(0)}" r="${f(137.5 * k)}" style="stroke-width:${f(25 * k)}"/>` + R(-225, 0, 450, 25, 'paint');
+    s += `<text class="auth" x="${X(-215)}" y="${Y(12)}" text-anchor="middle">L</text><text class="auth" x="${X(215)}" y="${Y(12)}" text-anchor="middle">R</text>`;
+    // ladder: vertical line 540 mm forward of the ring centre, lines 230 mm long forward (sea) and aft (fresh)
+    const vx = 540;
+    s += R(vx, zTop - 25, 25, zTop - zBot - 25, 'paint');
+    Object.entries(L).forEach(([n, z]) => {
+      const dir = n === 'F' || n === 'TF' ? -1 : 1, x = dir > 0 ? vx + 25 : vx - 230;
+      const on = n === zl || (this.p.rho <= 1000 && ((zl === 'S' && n === 'F') || (zl === 'T' && n === 'TF')));
+      s += R(x, z, 230, 25, on ? 'paint on' : 'paint');
+      s += `<text class="ln${n === zl ? ' on' : ''}" x="${dir > 0 ? X(vx + 270) : X(vx - 250)}" y="${f(Y(z) + 11)}" text-anchor="${dir > 0 ? 'start' : 'end'}">${n}</text>`;
+    });
+    // spacing dimension between S and T, which is what changes from ship to ship
+    const dx = vx + 380;
+    s += `<g class="dim"><line x1="${X(dx)}" y1="${Y(L.T)}" x2="${X(dx)}" y2="${Y(0)}"/><line x1="${X(dx - 25)}" y1="${Y(L.T)}" x2="${X(dx + 25)}" y2="${Y(L.T)}"/><line x1="${X(dx - 25)}" y1="${Y(0)}" x2="${X(dx + 25)}" y2="${Y(0)}"/></g><text class="lt" x="${X(dx + 35)}" y="${f(Y(L.T / 2) + 4)}">${fmt(r.step, 0)} mm</text>`;
+    // water, limit line
+    const zw = clamp(r.z, bot + 20, zb - 30);
+    s += `<rect class="wtr" x="0" y="${Y(zw)}" width="${W}" height="${f(H - Y(zw))}"/><line class="wl" x1="0" y1="${Y(zw)}" x2="${W}" y2="${Y(zw)}"/>`;
+    s += `<line class="lim" x1="0" y1="${Y(r.lim)}" x2="${W}" y2="${Y(r.lim)}"/><text class="limt" x="8" y="${f(Y(r.lim) - 5)}">deepest allowed</text>`;
+    s += `<text class="wlt" x="8" y="${f(Y(zw) + 16)}">waterline</text>`;
+    return `<svg class="sv llsv" viewBox="0 0 ${W} ${H}" role="img" aria-label="Load line mark on the side of the ${this.p.n}: deck line above, the ring and bar, and the ladder of season lines forward and fresh-water lines aft, with the current waterline and the deepest allowed waterline drawn across.">${s}</svg>`;
+  }
+}
+
+INIT.push(() => {
+  const b = bench('exp-loadline'); if (!b.root) return;
+  const sim = new LoadLineSim(), stage = $('.ll-stage', b.root);
+  const ZN = { T: 'Tropical', S: 'Summer', W: 'Winter', WNA: 'Winter North Atlantic' };
+  const draw = () => {
+    stage.innerHTML = sim.svg();
+    const r = sim.calc(), p = sim.p, sea = p.rho >= 1025, mm = v => fmtSigned(v, 0) + ' mm', zl = sim.zoneLine();
+    const line = !sea && zl === 'S' && p.rho <= 1000 ? 'F' : !sea && zl === 'T' && p.rho <= 1000 ? 'TF' : zl;
+    let txt = `<p><strong>${p.n}:</strong> summer draught ${fmt(p.Ts / 1000, 2)} m, so T and W sit ${fmt(r.step, 0)} mm from S; FWA ${fmt(r.fwa, 0)} mm; ring centre ${fmt(p.fb, 0)} mm below the deck line.${p.est ? ' (Displacement and TPC estimated from main dimensions.)' : ''}</p>`;
+    txt += Math.abs(r.margin) < 0.5 ? `<p><span class="chip ok">Loaded to the mark</span> The waterline is exactly at the limit: not one more tonne.</p>`
+      : r.margin > 0 ? `<p><span class="chip ok">Within the mark</span> She can still take about <strong>${fmt(r.marginT, 0)} t</strong> (${fmt(r.margin, 0)} mm) before the waterline reaches the limit.</p>`
+      : `<p><span class="chip bad">Overloaded</span> The limit is ${fmt(-r.margin, 0)} mm under water: about <strong>${fmt(-r.marginT, 0)} t</strong> must come off before she may sail.</p>`;
+    if (p.zone === 'WNA' && !sim.hasWNA) txt += `<p><span class="chip info">No WNA line</span> Ships over 100 m long have no WNA mark; in the winter North Atlantic they load to W.</p>`;
+    txt += sea ? `<p>In seawater the limit is the top of the <strong>${zl}</strong> line for the ${ZN[p.zone].toLowerCase()} zone.</p>`
+      : `<p>In water of ${fmt(p.rho / 1000, 3)} t/m³ she floats ${fmt(r.z - r.zSea, 0)} mm deeper than she will at sea, so the ${zl} line may be submerged by the dock water allowance, ${fmt(r.dwa, 0)} mm${line !== zl ? `: exactly the <strong>${line}</strong> line` : ''}. At sea she will rise to ${r.zSea >= 0 ? fmt(r.zSea, 0) + ' mm above' : fmt(-r.zSea, 0) + ' mm below'} the S line.</p>`;
+    b.live(`<div class="readout">${[['Waterline vs S', mm(r.z)], ['Limit vs S', mm(r.lim)], ['Freeboard now', fmt(r.fbNow, 0) + ' mm'], ['FWA', fmt(r.fwa, 0) + ' mm']].map(([k, v]) => `<div><span>${k}</span><b>${v}</b></div>`).join('')}</div>` + txt);
+  };
+  // displacement slider range follows the ship: about −8 % to +6 % of summer displacement
+  const fitDisp = () => {
+    const p = sim.p, st = p.D0 > 50000 ? 500 : 10, i = sDisp.input;
+    i.min = Math.floor(p.D0 * 0.92 / st) * st; i.max = Math.ceil(p.D0 * 1.06 / st) * st; i.step = st; sDisp.set(p.disp);
+  };
+  choice(b.controls, { id: 'll-ship', label: 'Ship', value: 'cargo', options: Object.entries(LL_SHIPS).map(([k, v]) => [k, v.n]), onChange: v => { sim.setShip(v); fitDisp(); draw(); } });
+  choice(b.controls, { id: 'll-zone', label: 'Zone and season on the route', value: 'S', options: Object.entries(ZN).map(([k, v]) => [k, k === 'WNA' ? 'W. N. Atlantic' : v]), onChange: v => { sim.p.zone = v; draw(); } });
+  const sRho = slider(b.controls, { id: 'll-rho', label: 'Water at the loading berth', min: 1000, max: 1025, step: 1, value: 1025, fmt: v => fmt(v / 1000, 3) + ' t/m³' + (v <= 1001 ? ' (fresh)' : v >= 1024 ? ' (sea)' : ' (dock)'), onInput: v => { sim.p.rho = v; draw(); } });
+  const sDisp = slider(b.controls, { id: 'll-disp', label: 'Loaded displacement', min: 6000, max: 7100, step: 10, value: 6600, unit: 't', onInput: v => { sim.p.disp = v; draw(); } });
+  buttons(b.controls, [{ label: 'Load to the limit', onClick: () => { sim.p.disp = Math.floor(sim.maxDisp()); sDisp.set(sim.p.disp); draw(); } },
+    { label: 'Reset', onClick: () => { sim.p.zone = 'S'; sim.p.rho = 1025; sim.setShip(sim.p.ship); sRho.set(1025); fitDisp(); $('#exp-loadline input[name="ll-zone"][value="S"]').checked = true; draw(); } }]);
+  fitDisp(); draw();
 });
 
 /* ===================== Module 4: Stability ===================== */
